@@ -1,0 +1,82 @@
+---
+title: "Why I ggplot"
+author: "Zach Lipp"
+date: 2017-04-25T13:09:13-06:00
+output: html_document
+---
+
+
+
+<div id="lets-talk-about-graphs" class="section level2">
+<h2>Let’s talk about graphs</h2>
+<p>If you know me, you know I like graphs. (I’m pretty one-dimensional, I know.)</p>
+<p>I have graphed in dozens of ways, and my preferred method for going on 2 years now has been R’s standout graphics package <code>ggplot2</code>. I could go on for hours about why ggplot2 is a great way to make data visuals, but I’ll spare readers familiar with ggplot the repitition and readers unfamiliar with ggplot the disgrace of describing graphics in words instead of pictures.</p>
+<p>The only background you need to know is that <code>ggplot2</code> graphics are incredibly customizable. You can display the same data in many ways, you can color your plots however you like, et cetera. Let’s dig into what goes into a custom package.</p>
+</div>
+<div id="what-does-a-ggplot2-graphic-look-like" class="section level2">
+<h2>What does a ggplot2 graphic look like?</h2>
+<p>R users who load the <code>ggplot2</code> package will also load some datasets we can use for graphing. We’ll focus on the <code>diamonds</code> dataset, which contains information on 53,940 individual diamonds.</p>
+<p>Here’s what a ggplot graphic can look like without much customization.</p>
+<pre class="r"><code>ggplot(data = diamonds) +
+  geom_point(aes(x = carat, y = price))</code></pre>
+<p><img src="/post/why-i-ggplot_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>We wrote two slim lines of code, but we generated a full graphic in return. In particular,</p>
+<ul>
+<li>Each point represents the caret (x-axis) and price (y-axis) of a diamond in our dataset. (There are almost 54,000 points in this graph!)</li>
+<li>Our axes are labeled by default</li>
+<li>The plot has a grey background by default</li>
+<li>The gridlines (that is, the lines on the plot background) are white by default</li>
+<li>Noticeable on this site: The area surrounding our plot (the margin) is white by default</li>
+</ul>
+<p><em>This is my first argument for why ggplot is so cool.</em> We get a lot for very little.</p>
+</div>
+<div id="dressing-up-a-ggplot2-graphic" class="section level2">
+<h2>Dressing up a ggplot2 graphic</h2>
+<p>What if we wanted to spruce this up a bit?</p>
+<p>The <code>labs</code> function gives us a very easy interface for labeling our graphics.</p>
+<pre class="r"><code>ggplot(data = diamonds) +
+  geom_point(aes(x = carat, y = price)) + 
+  labs(title = &#39;Title&#39;, 
+       subtitle = &#39;This is my subtitle. I want to fit some lines here.&#39;, 
+       caption = &#39;caption&#39;)</code></pre>
+<p><img src="/post/why-i-ggplot_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Here, we’ve added three more bits of text outside of our plot:</p>
+<ul>
+<li>A title, generally displayed above the plot</li>
+<li>A subtitle, generally displayed below the title</li>
+<li>A caption, generally displayed below the plot</li>
+</ul>
+<p>Being able to spruce up graphics relatively painlessly is a huge win for <code>ggplot2</code>.</p>
+</div>
+<div id="adding-more-dimensions-to-our-plot" class="section level2">
+<h2>Adding more dimensions to our plot</h2>
+<p>In my mind, <code>ggplot2</code> really shines when we want to do some more complicated visualizations. Say, for example, we wanted to start with our plots from before, but color the diamonds in the <code>diamond</code> dataset by the <code>cut</code> of the diamond. <code>ggplot2</code> makes this much easier than say Microsoft Excel:</p>
+<pre class="r"><code>ggplot(data = diamonds) +
+  geom_point(aes(x = carat, y = price, color = cut)) + 
+  labs(title = &#39;Title&#39;, 
+       subtitle = &#39;This is my subtitle. I want to fit some lines here.&#39;, 
+       caption = &#39;caption&#39;)</code></pre>
+<p><img src="/post/why-i-ggplot_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>What happened here? Well,</p>
+<ul>
+<li>We colored each point by the cut of the diamond</li>
+<li>We were given a color palette without having to worry about it</li>
+<li>We were given a legend(!) with no additional work</li>
+</ul>
+</div>
+<div id="bringing-it-together" class="section level2">
+<h2>Bringing it together</h2>
+<p>Let’s use a few more tricks to dress this plot up just a bit more.</p>
+<pre class="r"><code>ggplot(data = diamonds) +
+  geom_point(aes(x = carat, y = price, color = cut), alpha = .4) + 
+  labs(title = &#39;The Price of Diamonds by Carat and Cut&#39;, 
+       subtitle = &#39;In general, worse-cut diamonds are cheaper&#39;, 
+         caption = &#39;Data from `diamonds` dataset in ggplot2&#39;,
+         color = &#39;Cut&#39;, x = &#39;Carat&#39;, y = &#39;Price&#39;) </code></pre>
+<p><img src="/post/why-i-ggplot_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>The only new argument here is <code>alpha</code>, which lets us make our points more transparent so that we can see through the clusters better.</p>
+</div>
+<div id="closing-note-caution-with-defaults" class="section level2">
+<h2>Closing note: Caution with defaults</h2>
+<p>I wrote this post because I wanted to spell out in writing why I liked the philosophy of <code>ggplot2</code>. While that is still true, <strong>I do not like its defaults.</strong> I think the default theme (grey background, white gridlines), the default color palette, and the default labels (small Arial font on Windows; I believe Helvetica on Mac) are stylistically wrong. Wonderfully, these are all easy to fix using <code>ggplot2</code>’s expansive <code>theme</code> function. I’ll describe that more in a later post.</p>
+</div>
