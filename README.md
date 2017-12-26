@@ -1,3 +1,3 @@
 # Lipping Off
 
-Code for my personal blog developed with [https://github.com/rstudio/blogdown](blogdown).
+Code for my personal blog developed with [blogdown](https://github.com/rstudio/blogdown).
