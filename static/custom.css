@@ -1,0 +1,11 @@
+html, body {
+  border-top: 3px solid #440154;
+}
+
+.container a, .panel_default h4 a, h5 a {
+  color: #440154;
+}
+
+div.footer {
+  border-bottom: 5px solid #440154;
+}
