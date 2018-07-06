@@ -12,16 +12,10 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [[menu.main]]
     name = "blog"
     url = "/blog/"
-[[menu.main]]
-    name = "reading"
-    url = "/reading/"
-[[menu.main]]
-    name = "portfolio"
-    url = "/portfolio/"
 
 [params]
     avatar = "profile.jpg"
-    author = "Zach"
+    author = "Zach Lipp"
     description = "Zach's professional website"
     custom_css = ["custom.css"]
     custom_js = []

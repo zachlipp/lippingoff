@@ -5,11 +5,12 @@
       <section id="about">
         <div class="container">
         <div class="avatar">
-          <img class="img-circle" src="{{ .Site.BaseURL }}img/{{ .Site.Params.avatar }}" alt="Responsive image">
+          <img class="img-circle" src="{{ .Site.BaseURL }}img/{{ .Site.Params.avatar }}" alt="Profile">
         </div>
-        <h3>Hey, I'm <strong>{{ .Site.Params.author }}</strong>, a mostly-functioning person, data scientist, and <a href="http://twitter.com/{{ .Site.Params.Social.Twitter }}">tweeter</a>.</h3>
-        <h3>While you're here, check out <a href="{{ .Site.BaseURL }}reading/">what I've been reading</a> and/or my <a href="{{ .Site.BaseURL }}portfolio/">my professional porfolio</a>.</h3>
-        <h3> And if, god forbid, you want to read things I've written, you can do that <a href="{{ .Site.BaseURL }}blog/">here</a>, too.</h3>
+        <h3>Hey, I'm <strong>{{ .Site.Params.author }}</strong>, a mostly-functioning person and data scientist.</h3>
+        <h3>While you're here, check out <a href="{{ .Site.BaseURL }}blog/">my semi-serious blog</a>
+          and <a href="http://twitter.com/{{ .Site.Params.Social.Twitter }}">my never serious Twitter</a>.</h3>
+        <h3>More to come soon.</h3>
         {{ partial "social.html" . }}
         </div>
       </section>

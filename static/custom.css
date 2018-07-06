@@ -3,6 +3,10 @@ html, body {
 }
 
 .container a, .panel_default h4 a, h5 a {
+  color: #26828E;
+}
+
+a:hover {
   color: #440154;
 }
 
