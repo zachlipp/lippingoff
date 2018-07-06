@@ -16,14 +16,12 @@ output: html_document
 <p>As I’ve covered before, I think about data visualization a lot. In recognition that not everyone does, I thought I could do a very high level introduction to the world of data visualization aesthetics. But first, let’s get the party started right. Good work is aspirational, and if there’s a level of ggplot-ing I want to emulate, it’s <a href="https://timogrossenbacher.ch/2016/12/beautiful-thematic-maps-with-ggplot2-only/">Timo Grossenbacher’s breathtaking demographics map</a>.</p>
 <div class="figure">
 <img src="https://timogrossenbacher.ch/wp-content/uploads/2016/12/tm-final-map-1.png" alt="map" />
-<p class="caption">map</p>
 </div>
 <p>Not only is this a fantastic visualization; it’s a stunning image in its own right <em>and</em> the code and data to produce it are available on Tmo’s website. That’s powerful. Anyway, back to the task at hand before I get too distracted.</p>
 <p>We can think about good graphing as having two goals. First, good data visualization should accurately represent its data. Yes, you shouldn’t <a href="http://www.politifact.com/truth-o-meter/statements/2015/oct/01/jason-chaffetz/chart-shown-planned-parenthood-hearing-misleading-/">use your graphs to lie</a>, but it’s also important to properly display information. This is a challenging and rich area of study, but the gist of it is <a href="https://medium.com/@kennelliott/39-studies-about-human-perception-in-30-minutes-4728f9e31a73">visualizing the same data in different ways can cause people to understand the underlying data differently</a>. Presenting a graph as a pie chart instead of as a bar chart will change, sometimes in a measureable way, <em>how people understand your information</em>. There are some general standards for how to visualize data for perception’s sake (never make “3D” Excel charts, use pie charts very sparingly, <a href="https://www.youtube.com/watch?v=xAoljeRJ3lU">colormaps matter</a>, et cetera). In my experience, seemingly arbitrary rules on how not to visualize information stem from this first goal: Trying to represent your data as accurately as possible.</p>
 <p>The second goal of good graphing is one I spend more time thinking about: Making your visuals striking. Not to get all Marie Kondo in here, but there’s something pleasing on its face about seeing graph that looks intentional. This could well be an exposure effect; people who spend more time consuming visuals like breaks from tedious Excel graphics. To that degree, I’m not sure if any of the words I’m writing will make sense for someone less familiar with graphing. In the spirit of this post, let’s let the visuals do the talking. Timo wrote a fantastic post on mapping, but as for the more mundane visualizations, here’s a great graphic from Darkhorse Analytics:</p>
 <div class="figure">
 <img src="https://static1.squarespace.com/static/56713bf4dc5cb41142f28d1f/t/5671eae2816924fc2265189a/1454121618204/data-ink.gif?format=750w" alt="data-ink" />
-<p class="caption">data-ink</p>
 </div>
 <p>Timo’s chart shows how beautiful you can make a ggplot with extensive customization. This gif shows how easily we can dress up <em>any</em> simple graphics by default. The latter is the issue we’ll hit more often, so let’s practice it first. In general, how can we make it as easy as possible for us to produce - in Darkhorse’s language - naked graphs?</p>
 </div>
@@ -70,7 +68,7 @@ output: html_document
 <p>All said and done, here’s what I’ve got:</p>
 <pre class="r"><code>    theme_zz &lt;- function(base_size = 12) {
       half_line &lt;- base_size / 2
-      theme_bw(base_size = base_size, base_family = &#39;Raleway&#39;) %+replace% 
+      theme_bw(base_size = base_size, base_family = &#39;Raleway&#39;) %+replace%
         theme(
           panel.background = element_blank(),
           panel.grid       = element_blank(),
@@ -80,8 +78,8 @@ output: html_document
           legend.title     = element_text(size = rel(1.2),
                                           family = &#39;Mukta Vaani&#39;),
           plot.title       = element_text(size = rel(2),
-                                          family = &#39;Mukta Vaani&#39;, 
-                                          hjust = 0, vjust = 1, 
+                                          family = &#39;Mukta Vaani&#39;,
+                                          hjust = 0, vjust = 1,
                                           margin = margin(b = half_line * 1.4)),
           axis.ticks.x     = element_blank(),
           axis.ticks.y     = element_blank(),
@@ -92,7 +90,7 @@ output: html_document
           legend.key.size  = unit(15, &#39;pt&#39;)
         )
       }
-      
+
       ggplot(data = diamonds) +
         geom_point(aes(x = carat, y = price)) +
         theme_zz() </code></pre>
@@ -100,7 +98,7 @@ output: html_document
 <p>God. Damn. I’m so happy with how this turned out. Let’s throw some color and labels in to see what it can really do.</p>
 <pre class="r"><code>    ggplot(data = diamonds) +
       geom_point(aes(x = carat, y = price, color = cut)) +
-      theme_zz() + 
+      theme_zz() +
       labs(title = &#39;The Price of Diamonds by Carat and Cut&#39;
            , x = &#39;Carat&#39;
            , y = &#39;Price&#39;
