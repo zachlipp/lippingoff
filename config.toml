@@ -1,7 +1,7 @@
 baseurl = "/"
 languageCode = "en-us"
 title = "Lipping Off"
-theme = "hyde"
+theme = "hugo-sustain"
 googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
@@ -10,31 +10,25 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     post = "/:slug/"
 
 [[menu.main]]
-    name = "About"
-    url = "/about/"
-[[menu.main]]
-    name = "GitHub"
-    url = "https://github.com/zachlipp"
-[[menu.main]]
-    name = "Twitter"
-    url = "https://twitter.com/zlipp"
+    name = "blog"
+    url = "/blog/"
 
 [params]
-    description = "The more serious side of @zlipp"
-
+    avatar = "profile.jpg"
+    author = "Zach Lipp"
+    description = "Zach's professional website"
+    custom_css = ["custom.css"]
+    custom_js = []
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.11.0"
     highlightjsCDN = "//cdn.bootcss.com"
-    highlightjsLang = ["r", "yaml"]
+    highlightjsLang = ["python", "r", "yaml"]
     highlightjsTheme = "github"
 
     MathJaxCDN = "//cdn.bootcss.com"
     MathJaxVersion = "2.7.1"
 
-    themeColor = "theme-zlipp"
-
-    [params.logo]
-    url = "logo.png"
-    width = 50
-    height = 50
-    alt = "Logo"
+[params.social]
+  Github = "zachlipp"
+  Twitter = "zlipp"
+  LinkedIn = "zachlipp"
