@@ -1,7 +1,7 @@
 ---
 title: Hard things
 author: Zach
-date: 2018-01-21T00:00:00
+date: 2019-01-21T00:00:00
 slug: hard-things
 categories: []
 tags: []
