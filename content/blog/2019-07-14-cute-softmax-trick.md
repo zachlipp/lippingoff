@@ -1,5 +1,5 @@
 ---
-title: abstention-trick
+title: Cute math trick and some tips for proofs 
 author: Zach Lipp
 date: '2019-07-14'
 slug: abstention-trick
