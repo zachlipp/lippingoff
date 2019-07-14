@@ -1,3 +1,12 @@
+---
+title: abstention-trick
+author: Zach Lipp
+date: '2019-07-14'
+slug: abstention-trick
+categories: []
+tags: []
+---
+
 # Cute math trick and some tips for proofs
 
 I had the privilege of attending [ICML 2019](https://icml.cc/Conferences/2019) with some colleagues last month, and I've started working through some of the papers that stood out to me. First on the docket: [*Combating Label Noise in Deep Learning Using Abstention*.](https://arxiv.org/abs/1905.10964) Key idea: When classifying $k$  variables, create a $k+1$ category, codify the extra class as "choosing to abstain", and then train your model to abstain explicitly rather than deriving abstention after the fact based on classification scores.  
