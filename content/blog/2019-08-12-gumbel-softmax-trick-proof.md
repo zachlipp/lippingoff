@@ -40,13 +40,22 @@ P(k \text{ is largest}|\{x_{k'}\}^K_{k'=1})
 
 P(z_k \text{ is largest} | z_k, \{x_{k'}\}^K_{k'=1}) = \prod_{k' \neq k} e^{-e^{-(z_k - x_{k'})}}$ by the gumbel CDF and
 
-$$ 
 $$
 \begin{equation}
    \begin{split}
        \operatorname*{argmax}G(x_k, 1) &= P(k \text{ is largest}|\{x_{k'}\}^K_{k'=1})  \\
-    &= PDF(G(x_k, 1)) \cdot P(z_k \text{ is largest}| z_k, \{x_{k'}\}^K_{k'=1})
-  \end{split}
+    &= PDF(G(x_k, 1)) \cdot P(z_k \text{ is largest}| z_k, \{x_{k'}\}^K_{k'=1}) && \text{by marginalizing} \\
+    &= PDF(G(x_k, 1)) \cdot \prod_{k'\neq k}CDF(G(x_k, 1)) \\
+    &= \int_{-\infty}^\infty e^{-(z_k-x_k)-e^{-(z_k-x_k)}} \cdot
+   \prod_{k' \neq k} e^{-e^{-(z_k - x_{k'})}} dz_k \\
+   &= \int_{-\infty}^\infty e^{-(z_k-x_k)-e^{-(z_k-x_k)}} \cdot e^{\sum^{K-1}_{k'=1}-e^{-(z_k-x_{k'})}} dz_k \\
+   &= \int_{-\infty}^\infty e^{-z_k+x_k-e^{-z_k+x_k}} \cdot e^{\sum^{K-1}_{k'=1}-e^{-z_k+x_{k'}}} dz_k \\
+   &= \int_{-\infty}^\infty e^{-z_k+x_k-e^{-z_k+x_k}} \cdot e^{-e^{z_k-x_k}\sum^{K}_{k'=1}e^{-z_k+x_{k'}}} dz_k \\
+      &= \int_{-\infty}^\infty e^{-z_k+x_k-\sum^{K}_{k'=1}e^{-z_k+x_{k'}}} dz_k \\
+      &= \int_{-\infty}^\infty e^{-z_k+x_k-e^{-z_k}\sum^{K}_{k'=1}e^{x_{k'}}} dz_k \\
+   \end{split}
 \end{equation}
 $$
+
+
 
