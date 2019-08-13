@@ -72,4 +72,4 @@ As mentioned above, it's been a few years since I tried a proof (and to be hones
 
 
 
-I'll have a full implementation up and some point - this was a fun roadblock in the meantime!
+I'll have a full implementation up at some point - this was a fun roadblock in the meantime!
