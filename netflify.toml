@@ -1,0 +1,5 @@
+[[redirects]]
+from = "/slides"
+to = "https://github.com/zachlipp/slides"
+status = 301
+force = true
