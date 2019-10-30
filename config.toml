@@ -9,9 +9,14 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [permalinks]
     post = "/:slug/"
 
-[[menu.main]]
-    name = "blog"
-    url = "/blog/"
+[menu]
+  [[menu.main]]
+      name = "blog"
+      url = "/blog/"
+  
+  [[menu.main]]
+    name = "talks"
+    url = "https://github.com/zachlipp/slides"
 
 [params]
     avatar = "profile.jpg"
