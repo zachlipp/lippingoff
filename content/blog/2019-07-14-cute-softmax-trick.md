@@ -16,9 +16,11 @@ I had the privilege of attending [ICML 2019](https://icml.cc/Conferences/2019) w
 I was hitting some issues with the very first formula in the paper (I'm new to research if that wasn't obvious), and I wanted to see how the authors coded it up.
 
 The formula
+
 $$
-\mathcal{L}(x_j) = (1 - p_{k+1})(-\sum^{k}_{i=1} t_i \log \frac{p_i}{1 - p_{k+1}}) + \alpha \log \frac{1}{1 - p_{k+1}}
+{L}(x_j) = (1 - p_{k+1})(-\sum^{k}_{i=1} t_i \log \frac{p_i}{1 - p_{k+1}}) + \alpha \log \frac{1}{1 - p_{k+1}}
 $$
+
 Gets [translated to](https://github.com/thulas/dac-label-noise/blob/542f3cf6442e2095cf1be7215797da5c32c1728a/dac_loss.py#L122)
 
 ```python
@@ -31,7 +33,7 @@ This seems okay (log transform on the rightmost term but whatever), but what is 
 h_c = F.cross_entropy(input_batch[:,0:-1],target_batch,reduce=False)
 ```
 
-Huh? What happened to  $\log \frac{p_i}{1 - p_{k+1}}$? It took me a few tries to convince myself, but these are actually equivalent (I'm adding a little experiment to demonstrate this later this week).
+Huh? What happened to $ \log \frac{p_i}{1 - p_{k+1}} $? It took me a few tries to convince myself, but these are actually equivalent.
 
 Even after I was convinced, I had to chew on the proof for a bit. I revisited the problem after a long weekend off, and it's pretty slick. 
 
@@ -39,27 +41,30 @@ $$
 \begin{equation}
   \begin{split}
   \frac{p_i}{1 - p_{k+1}}
-       &= \frac{\frac{e^v}{\sum^{k+1}_{i=1}e^v}}{1 - p_{k+1}} && \text{given ouput } v \text{, softmax function} \\
-       &= \frac{e^v}{\sum^{k+1}_{i=1}e^v} \cdot \frac{1}{1 - p_{k+1}} \\
-       &= \frac{e^v}{\sum^{k+1}_{i=1}e^v} \cdot \frac{1}{\sum^{k}_{j=1}p_j} && \quad\text{(1)   } \\
-        &= \frac{e^v}{\sum^{k+1}_{i=1}e^v} \cdot \frac{1}{\sum^{k}_{j=1}(\frac{e^v}{\sum^{k+1}_{i=1}e^v})} \\
-       &= \frac{e^v}{\sum^{k+1}_{i=1}e^v} \cdot \frac{\sum^{k+1}_{i=1}e^v}{\sum^{k}_{j=1}e^v} \\
-       &= \frac{e^v}{\sum^{k}_{j=1}e^v} \\
+       &= \frac{\frac{e^v}{\sum^{k+1}_{i=1}e^v}}{1 - p_{k+1}} && \text{given ouput } v \text{, softmax function} \\\\
+       &= \frac{e^v}{\sum^{k+1}_{i=1}e^v} \cdot \frac{1}{1 - p_{k+1}} \\\\
+       &= \frac{e^v}{\sum^{k+1}_{i=1}e^v} \cdot \frac{1}{\sum^{k}_{j=1}p_j} && \quad\text{(1)   } \\\\
+        &= \frac{e^v}{\sum^{k+1}_{i=1}e^v} \cdot \frac{1}{\sum^{k}_{j=1}(\frac{e^v}{\sum^{k+1}_{i=1}e^v})} \\\\
+       &= \frac{e^v}{\sum^{k+1}_{i=1}e^v} \cdot \frac{\sum^{k+1}_{i=1}e^v}{\sum^{k}_{j=1}e^v} \\\\
+       &= \frac{e^v}{\sum^{k}_{j=1}e^v} \\\\
        &= p_j && \text{by softmax definition}
   \end{split}
 \end{equation}
 $$
 
 This means that
+
 $$
 \begin{equation}
   \begin{split}
-    \text{h_c} &= -\sum^{k}_{i=1} t_i \log \frac{p_i}{1 - p_{k+1}} \\
-               &= -\sum^{k}_{i=1} t_i \log p_i \\
-               &= \text{cross_entropy}(v, t) && \text{for outputs, targets } v,\space t
+    \text{h_c}
+      &= -\sum^{k}\_{i=1} t_i \log \frac{p_i}{1 - p_{k+1}} \\\\
+      &= -\sum^{k}\_{i=1} t_i \log p_i \\\\
+      &= \text{cross_entropy}(v, t) && \text{for outputs, targets } v,\space t
   \end{split}
 \end{equation}
 $$
+
 Pretty cool stuff, but definitely deserved a comment!
 
 ## The tips
