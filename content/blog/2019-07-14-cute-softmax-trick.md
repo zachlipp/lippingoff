@@ -74,7 +74,3 @@ As mentioned above, it's been a few years since I tried a proof (and to be hones
 - **Demonstrate, then prove.** When I originally saw `h_c`, I assumed it was a typo or mistake in the calculation. It wasn't until I'd shown for myself that the trick works in practice that I could approach demonstrating why it worked
 - **A little understanding goes a long way.** I spent many hours on this little proof. If I had to give a "eureka" moment, it'd definitely be understanding what $1 - p_{k + 1}$ represents (See $\text{(1)}$ in the proof.). It wasn't until I asked myself out lout *Well, what is this?* and answered with *The remaining probability mass of the sum of the first k probabilities* that I saw a path through the proof.
 - **Don't stress subscripts at first, just focus on what's a scalar and what's a vector.** This might be a little too specific, but I found labeling the dimension of each term immensely helpful. My first work through of this proof eschewed subscripts entirely Instead, I just noted when each value represented a scalar or a vector. I haven't used many vector-valued functions in proofs, and this explicit labeling approach helped me a lot more than pining for intuition. (Note: This technique was especially helpful, I think, because $p_i$ is overloaded in the paper - see my introduction of $p_k$ in the proof).
-
-
-
-I'll have a full implementation up at some point - this was a fun roadblock in the meantime!
