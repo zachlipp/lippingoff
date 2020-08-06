@@ -5,12 +5,11 @@
       <section id="about">
         <div class="container">
         <div class="avatar">
-          <img class="img-circle" src="{{ .Site.BaseURL }}img/{{ .Site.Params.avatar }}" alt="Profile">
+          <img class="img-square" src="{{ .Site.BaseURL }}img/{{ .Site.Params.avatar }}" alt="Profile">
         </div>
-        <h3>Hey, I'm <strong>{{ .Site.Params.author }}</strong>, a mostly-functioning person and data scientist.</h3>
+        <h3>Hey, I'm <strong>{{ .Site.Params.author }}</strong>. I spend a lot of time thinking about how we can use computers better. According to the lovely <a href="https://www.excavating.ai/">ImageNet Roulette</a>, I'm a swot, grind, nerd, wonk, and dweeb - in that order.</h3>
         <h3>While you're here, check out <a href="{{ .Site.BaseURL }}blog/">my semi-serious blog</a>
           and <a href="http://twitter.com/{{ .Site.Params.Social.Twitter }}">my never serious Twitter</a>.</h3>
-        <h3>More to come soon.</h3>
         {{ partial "social.html" . }}
         </div>
       </section>
