@@ -1,0 +1,28 @@
+{{ partial "head" . }}
+  <body>
+      <!-- Header -->
+      {{ partial "header" . }}
+      <div class="talk-container">
+        <div class="talk-header">
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Params.Description }}</p>
+        </div>
+        <div class="talk-info">
+          <ul>
+            <li><strong>Venue: </strong>{{ .Params.Venue }}</li>
+            <li><strong>Date: </strong>{{ .Date.Format "January 2, 2006" }}</li>
+            <li><strong><a href="{{ .Params.link }}">Permalink</a></strong>
+          </ul>
+        </div>
+        <div class="talk-window">
+          <iframe width="1100" height="450" src="{{ .Params.Link }}"> 
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    {{ partial "footer" . }}
+    
+  </body>
+</html>

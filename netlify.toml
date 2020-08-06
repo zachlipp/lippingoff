@@ -1,5 +1,0 @@
-[[redirects]]
-  from = "http://lippingoff.com/talks"
-  to = "https://github.com/zachlipp/slides"
-  status = 301
-  force = true

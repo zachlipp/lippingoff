@@ -13,3 +13,28 @@ a:hover {
 div.footer {
   border-bottom: 5px solid #440154;
 }
+
+.talk-container {
+  width: auto;
+  text-align: center;
+}
+
+.talk-info > ul {
+  width: 50%;
+  display: inline-flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.talk-info > li {
+  display: inline-block;
+}
+
+.talk-window {
+  text-align: center;
+}
+
+.talk-window > iframe {
+  display: inline-block;
+  justify-content: center;
+}

@@ -16,7 +16,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   
   [[menu.main]]
     name = "talks"
-    url = "https://github.com/zachlipp/slides"
+    url = "/talks/"
 
 [params]
     avatar = "profile.jpg"
