@@ -2,6 +2,10 @@ html, body {
   border-top: 3px solid #440154;
 }
 
+h3 {
+  color: #26828E;
+}
+
 .container a, .panel_default h4 a, h5 a {
   color: #26828E;
 }
@@ -15,6 +19,8 @@ div.footer {
 }
 
 .talk-container {
+  padding-top: 10px;
+  font-size: 16px;
   width: auto;
   text-align: center;
 }
@@ -24,6 +30,7 @@ div.footer {
   display: inline-flex;
   align-items: stretch;
   justify-content: space-between;
+  font-size: 13px;
 }
 
 .talk-info > li {

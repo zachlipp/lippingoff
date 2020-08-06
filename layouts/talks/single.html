@@ -4,14 +4,14 @@
       {{ partial "header" . }}
       <div class="talk-container">
         <div class="talk-header">
-          <h3>{{ .Title }}</h3>
-          <p>{{ .Params.Description }}</p>
+          <h3><strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong></h3>
+          <h4>{{ .Params.Description }}</h4>
         </div>
         <div class="talk-info">
           <ul>
             <li><strong>Venue: </strong>{{ .Params.Venue }}</li>
             <li><strong>Date: </strong>{{ .Date.Format "January 2, 2006" }}</li>
-            <li><strong><a href="{{ .Params.link }}">Permalink</a></strong>
+            <li><strong><a href="{{ .Params.link }}">Direct Link</a></strong>
           </ul>
         </div>
         <div class="talk-window">
