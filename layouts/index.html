@@ -7,9 +7,10 @@
         <div class="avatar">
           <img class="img-square" src="{{ .Site.BaseURL }}img/{{ .Site.Params.avatar }}" alt="Profile">
         </div>
-        <h3>Hey, I'm <strong>{{ .Site.Params.author }}</strong>. I spend a lot of time thinking about how we can use computers better. According to the lovely <a href="https://www.excavating.ai/">ImageNet Roulette</a>, I'm a swot, grind, nerd, wonk, and dweeb - in that order.</h3>
-        <h3>While you're here, check out <a href="{{ .Site.BaseURL }}blog/">my semi-serious blog</a>
-          and <a href="http://twitter.com/{{ .Site.Params.Social.Twitter }}">my never serious Twitter</a>.</h3>
+        <div class="bio">
+          <p>Hey, I'm <strong>{{ .Site.Params.author }}</strong>, an engineer in Chicago.</p>
+          <p>As you can probably guess if you've seen <a href="https://twitter.com/zlipp">my Twitter</a>, I try not to take things too seriously.</p>
+          <p>When I am serious, I'm interested in machine learning, reproducible data science, and software architecture. I use this site to teach myself more about lightweight web design, <a href="{{ .Site.BaseURL }}blog/">write</a>, and record <a href="{{ .Site.BaseURL }}talks/">my presentations</a>.</p>
         {{ partial "social.html" . }}
         </div>
       </section>

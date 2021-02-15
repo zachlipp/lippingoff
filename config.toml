@@ -18,8 +18,12 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     name = "talks"
     url = "/talks/"
 
+  [[menu.main]]
+    name = "resume"
+    url = "/resume.pdf"
+
 [params]
-    avatar = "profile.jpg"
+    avatar = "profile.png"
     author = "Zach Lipp"
     description = "Zach's professional website"
     custom_css = ["custom.css"]
