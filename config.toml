@@ -23,9 +23,9 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     url = "/resume.pdf"
 
 [params]
-    avatar = "profile.png"
+    avatar = "profile.webp"
     author = "Zach Lipp"
-    description = "Zach's professional website"
+    description = "Zach's digital playground"
     custom_css = ["custom.css"]
     custom_js = []
     # options for highlight.js (version, additional languages, and theme)
