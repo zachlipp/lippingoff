@@ -45,3 +45,18 @@ div.footer {
   display: inline-block;
   justify-content: center;
 }
+
+.img-square {
+  width: 30%;
+}
+
+.avatar {
+  padding-top: 0%;
+  padding-bottom: 3%;
+}
+
+.bio {
+  font-size: 16px;
+  max-width: 70%;
+  display: inline-block;
+}
