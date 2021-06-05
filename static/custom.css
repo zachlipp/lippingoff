@@ -66,3 +66,27 @@ div.footer {
   margin-left: auto;
   margin-right: auto;
 }
+
+.talks {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: minmax(50px, 1fr) 50px;
+  gap: 0px 30px;
+  grid-template-areas:
+    "date title"
+    "venue description";
+  margin-bottom: 1px;
+}
+
+.talks > .date {
+  grid-area: date;
+}
+.talks > .title {
+  grid-area: title;
+}
+.talks > .venue {
+  grid-area: venue;
+}
+.talks > .description {
+  grid-area: description;
+}
