@@ -1,7 +1,7 @@
 baseurl = "/"
 languageCode = "en-us"
 title = "Lipping Off"
-theme = "hugo-sustain"
+theme = ["hugo-sustain", "reveal-hugo"]
 googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
@@ -41,3 +41,8 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   Github = "zachlipp"
   Twitter = "zlipp"
   LinkedIn = "zachlipp"
+
+[outputFormats.Reveal]
+  baseName = "index"
+  mediaType = "text/html"
+  isHTML = true
