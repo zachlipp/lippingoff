@@ -26,7 +26,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     avatar = "profile.webp"
     author = "Zach Lipp"
     description = "Zach's digital playground"
-    custom_css = ["custom.css"]
+    custom_css = ["css/custom.css"]
     custom_js = []
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.11.0"

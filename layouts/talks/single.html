@@ -1,4 +1,6 @@
 {{ define "main" }}
+  {{ partial "slides_head" . }}
   {{ partial "reveal-hugo/slides" (slice .Page) }}
   {{ partial "reveal-hugo/slides" (where .Site.RegularPages "Type" "home") }}
+  {{ partial "footer" . }}
 {{ end }}
