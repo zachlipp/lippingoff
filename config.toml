@@ -48,4 +48,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   isHTML = true
 
 [markup.goldmark.renderer]
-  unsafe= true
+  unsafe = true
+
+[params.reveal_hugo]
+  controls = false
