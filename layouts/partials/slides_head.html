@@ -4,26 +4,16 @@
 .reveal .footer {
   font-family: "Montserrat";
   font-size: .7em;
-  display: flex;
-  justify-content: space-between;
-  width: 1000px;
+  display: grid;
+  grid-auto-flow: column;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 65%;
   justify: center;
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.footer > .twitter {
-  flex: left;
-}
-
-.footer > .slides-link {
-  flex: right;
 }
 </style>
+
 <title>{{ or .Page.Title .Site.Title }}</title>
 {{ with $.Param "description" }}<meta name="description" content="{{ . }}">{{ end }}
 {{ with .Site.Author.name }}<meta name="author" content="{{ . }}">{{ end }}
