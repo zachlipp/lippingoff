@@ -46,3 +46,6 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   baseName = "index"
   mediaType = "text/html"
   isHTML = true
+
+[markup.goldmark.renderer]
+  unsafe= true

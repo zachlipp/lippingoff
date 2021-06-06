@@ -52,6 +52,8 @@ What about us who don't want our research reproduced?
 
 ---
 
+<section data-noprocess>
+
 <div class="right" style="float: left; width: 45%;">
 <img src="figs/zuckerberg.jpg" style="{max-height: 830px}">
 <div class="caption" style="font-size: 9px">
@@ -69,6 +71,8 @@ By Max Morse for TechCrunch <a rel="nofollow" class="external text" href="https:
 <a href="https://creativecommons.org/licenses/by/2.0" title="Creative Commons Attribution 2.0">CC BY 2.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=45609023">Link</a>
 </div>
 </div>
+
+</section>
 
 ---
 
