@@ -53,23 +53,22 @@ What about us who don't want our research reproduced?
 ---
 
 <section data-noprocess>
+  <div style="display: grid; grid-auto-flow: column;">
+    <div>
+      <img src="figs/zuckerberg.jpg" style="max-height: 830px;">
+      <div class="caption" style="font-size: 9px">
+        By <a rel="nofollow" class="external text" href="https://www.flickr.com/people/22882274@N04">Anthony Quintano</a> from Honolulu, HI, United States - <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/quintanomedia/41118886324/">Mark Zuckerberg F8 2018 Keynote</a>
+        <a href="https://creativecommons.org/licenses/by/2.0" title="Creative Commons Attribution 2.0">CC BY 2.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=79154080">Link</a>
+    </div>
+  </div>
 
-<div class="right" style="float: left; width: 45%;">
-<img src="figs/zuckerberg.jpg" style="{max-height: 830px}">
-<div class="caption" style="font-size: 9px">
-By <a rel="nofollow" class="external text" href="https://www.flickr.com/people/22882274@N04">Anthony Quintano</a> from Honolulu, HI, United States - <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/quintanomedia/41118886324/">Mark Zuckerberg F8 2018 Keynote</a>
-
-<a href="https://creativecommons.org/licenses/by/2.0" title="Creative Commons Attribution 2.0">CC BY 2.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=79154080">Link</a>
-</div>
-</div>
-
-<div class="left" style="float: right; width: 45%; max-height: 430px">
-<img src="figs/holmes.jpg" style="{max-height: 830px}">
-<div class="caption" style="font-size:9px">
-By Max Morse for TechCrunch <a rel="nofollow" class="external text" href="https://www.flickr.com/people/52522100@N07">TechCrunch</a> - <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/techcrunch/15178532521/">TechCrunch Disrupt San Francisco 2014</a>,
-
-<a href="https://creativecommons.org/licenses/by/2.0" title="Creative Commons Attribution 2.0">CC BY 2.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=45609023">Link</a>
-</div>
+  <div>
+    <img src="figs/holmes.jpg" style="max-height: 830px;">
+    <div class="caption" style="font-size:9px">
+      By Max Morse for TechCrunch <a rel="nofollow" class="external text" href="https://www.flickr.com/people/52522100@N07">TechCrunch</a> - <a rel="nofollow" class="external text" href="https://www.flickr.com/photos/techcrunch/15178532521/">TechCrunch Disrupt San Francisco 2014</a>,
+      <a href="https://creativecommons.org/licenses/by/2.0" title="Creative Commons Attribution 2.0">CC BY 2.0</a>, <a href="https://commons.wikimedia.org/w/index.php?curid=45609023">Link</a>
+    </div>
+  </div>
 </div>
 
 </section>
