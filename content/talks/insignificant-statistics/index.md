@@ -48,7 +48,7 @@ Senior Software Engineer, Lumere
 
 ### Significance 201 
 
-- The standard measure of significance is whether the "p-value" of a statistical test is below the threshold of (p <= 0.05)
+- The standard measure of significance is whether the "p-value" of a statistical test is below the threshold of ($p <= 0.05$)
 - If the observed values came from the same distribution, we would see results this or more extreme only 5% of the time
 
 ---
@@ -114,7 +114,7 @@ if __name__ == "__main__":
 
 ### Significance 201
 
-p <= 0.05 is an arbitrary threshold
+$p <= 0.05$ is an arbitrary threshold
 
 ![](figs/larger_ps.png)
 
@@ -122,7 +122,7 @@ p <= 0.05 is an arbitrary threshold
 
 ### Significance 201
 
-p <= 0.05 is an arbitrary threshold
+$p <= 0.05$ is an arbitrary threshold
 
 ![](figs/smaller_ps.png)
 
@@ -224,10 +224,9 @@ This phenomenon has many names:
 - *p-hacking*
 - *the garden of forking paths*
 - *researchers' degrees of freedom*
-
+{{% fragment %}}
 This isn't malicious; it can feel like a natural part of research
-<!-- .element: class="fragment" data-fragment-index="1" -->
-
+{{% /fragment %}}
 ---
 
 ## Python Application: City of Chicago Employee Income
@@ -359,6 +358,7 @@ def report_significant_results(
 report_significant_results(salaried, "Department", "Annual Salary", 100)
 ```
 
+{{% fragment %}}
 ```
 Significant result! POLICE (p=1.8468111302573452e-14)
 Significant result! FIRE (p=2.174279584156084e-268)
@@ -386,7 +386,7 @@ Significant result! BUDGET & MGMT (p=0.0003868357815750312)
 In total, 55.56% of results are statistically significantly different.
 If there were no differences between groups, we'd expect 5% of results to differ at this level by chance alone.
 ```
-<!-- .element: class="fragment" data-fragment-index="1" -->
+{{% /fragment %}}
 
 ---
 
@@ -399,6 +399,7 @@ salaried["last_name"] = salaried["Name"].str.replace(r",[\s\S]+", "")
 report_significant_results(salaried, "last_name", "Annual Salary", 100)
 ```
 
+{{% fragment %}}
 ```
 Significant result! WILLIAMS (p=0.0003461218856700791)
 Significant result! RODRIGUEZ (p=0.0010919920125766129)
@@ -432,7 +433,7 @@ Significant result! DOYLE (p=0.040687043599224856)
 In total, 26.0% of results are statistically significantly different.
 If there were no differences between groups, we'd expect 5% of results to differ at this level by chance alone.
 ```
-<!-- .element: class="fragment" data-fragment-index="1"-->
+{{% /fragment %}}
 
 ---
 
@@ -447,6 +448,7 @@ salaried.loc[:, "random"] = np.random.normal(size=salaried.shape[0])
 report_significant_results(salaried, "last_name", "random", 500)
 ```
 
+{{% fragment %}}
 ```
 Significant result! ROBINSON (p=0.02709571033660603)
 Significant result! SCOTT (p=0.03356738756901648)
@@ -471,7 +473,7 @@ Significant result! ALMANZA (p=0.0317423466959263)
 In total, 3.4% of results are statistically significantly different.
 If there were no differences between groups, we'd expect 5% of results to differ at this level by chance alone.
 ```
-<!-- .element: class="fragment" data-fragment-index="1"-->
+{{% /fragment %}}
 
 ---
 
@@ -480,8 +482,9 @@ If there were no differences between groups, we'd expect 5% of results to differ
 - We never see the for loops
 - We don't know how many comparisons occurred
 
+{{% fragment %}}
 ![https://www.xkcd.com/882/](figs/xkcd3.png)
-<!-- .element: class="fragment" data-fragment-index="1"-->
+{{% /fragment %}}
 
 ---
 
@@ -497,10 +500,10 @@ If there were no differences between groups, we'd expect 5% of results to differ
 
 $p <= 0.05 \rightarrow p <= 0.005$
 
+{{% fragment %}}
 - Doesn't solve either of our problems
-<!-- .element: class="fragment" data-fragment-index="1"-->
 - We've known this for a long time
-<!-- .element: class="fragment" data-fragment-index="1"-->
+{{% /fragment %}}
 
 ---
 
@@ -508,8 +511,9 @@ $p <= 0.05 \rightarrow p <= 0.005$
 
 > Consequently, an individual unacquainted with the system of groupings that preceded the result will have absolutely no fixed rule for betting on whether the result can be attributed to chance.
 
+{{% fragment %}}
 ![http://www.probabilityandfinance.com/articles/](figs/cournot.png)
-<!-- .element: class="fragment" data-fragment-index="1"-->
+{{% /fragment %}}
 
 ---
 
@@ -517,30 +521,23 @@ $p <= 0.05 \rightarrow p <= 0.005$
 
 If we're trying to find relationships that generalize, show that they do!
 
-<div>
-
-<!-- .element: class="fragment" data-fragment-index="1"-->
+{{% fragment %}}
 - Hold out sets (`sklearn.model_selection.train_test_split`)
-</div>
-
-<div>
-
-<!-- .element: class="fragment" data-fragment-index="2"-->
+{{% /fragment %}}
+{{% fragment %}}
 - Cross-validation (`sklearn.model_selection.KFold`)
-</div>
-
-<div>
-
-<!-- .element: class="fragment" data-fragment-index="3"-->
+{{% /fragment %}}
+{{% fragment %}}
 - Feature selection methods like Recursive Feature Elimination (RFE) (`sklearn.feature_selection.RFE`)
-</div>
+{{% /fragment %}}
 
 ---
 
 ### Good idea for everyone: Be skeptical
 
+{{% fragment %}}
 ![https://www.xkcd.com/882/](figs/xkcd3.png)
-<!-- .element: class="fragment" data-fragment-index="1"-->
+{{% /fragment %}}
 
 ---
 
