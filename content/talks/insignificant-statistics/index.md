@@ -48,7 +48,7 @@ Senior Software Engineer, Lumere
 
 ### Significance 201 
 
-- The standard measure of significance is whether the "p-value" of a statistical test is below the threshold of ($p <= 0.05$)
+- The standard measure of significance is whether the "p-value" of a statistical test is below the threshold of (p <= 0.05)
 - If the observed values came from the same distribution, we would see results this or more extreme only 5% of the time
 
 ---
@@ -114,7 +114,7 @@ if __name__ == "__main__":
 
 ### Significance 201
 
-$p <= 0.05$ is an arbitrary threshold
+p <= 0.05 is an arbitrary threshold
 
 ![](figs/larger_ps.png)
 
@@ -122,7 +122,7 @@ $p <= 0.05$ is an arbitrary threshold
 
 ### Significance 201
 
-$p <= 0.05$ is an arbitrary threshold
+p <= 0.05 is an arbitrary threshold
 
 ![](figs/smaller_ps.png)
 
