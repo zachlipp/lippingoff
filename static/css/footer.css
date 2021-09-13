@@ -1,8 +1,0 @@
-.reveal .footer {
-  font-family: "Montserrat";
-  font-size: .7em;
-  display: grid;
-  grid-auto-flow: column;
-  justify: center;
-  z-index: -1;
-}

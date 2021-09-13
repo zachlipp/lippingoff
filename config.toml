@@ -27,6 +27,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     author = "Zach Lipp"
     description = "Zach's digital playground"
     custom_css = ["css/custom.css"]
+    slides_css = ["css/slides.css"]
     custom_js = []
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.11.0"
