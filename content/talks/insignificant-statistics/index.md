@@ -2,7 +2,6 @@
 title: "Insignificant Statistics: What statistical significance means, why it's broken, and how to fix it"
 outputs: Reveal
 date: 2020-01-15
-venue: 
 venue: ChiPy (Chicago Python User Group)
 description: A limited tutorial on p-values, how to abuse them, and why to avoid them
 reveal_hugo:
