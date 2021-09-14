@@ -1,0 +1,11 @@
+.slides-contact {
+  font-family: "Montserrat";
+  font-size: .6em;
+  display: grid;
+  grid-auto-flow: column;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 65%;
+  justify: center;
+}

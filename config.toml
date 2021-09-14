@@ -1,7 +1,7 @@
 baseurl = "/"
 languageCode = "en-us"
 title = "Lipping Off"
-theme = "hugo-sustain"
+theme = ["hugo-sustain", "reveal-hugo"]
 googleAnalytics = ""
 disqusShortname = ""
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
@@ -26,7 +26,8 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     avatar = "profile.webp"
     author = "Zach Lipp"
     description = "Zach's digital playground"
-    custom_css = ["custom.css"]
+    custom_css = ["css/custom.css"]
+    slides_css = ["css/slides.css"]
     custom_js = []
     # options for highlight.js (version, additional languages, and theme)
     highlightjsVersion = "9.11.0"
@@ -41,3 +42,14 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   Github = "zachlipp"
   Twitter = "zlipp"
   LinkedIn = "zachlipp"
+
+[outputFormats.Reveal]
+  baseName = "index"
+  mediaType = "text/html"
+  isHTML = true
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[params.reveal_hugo]
+  controls = false
