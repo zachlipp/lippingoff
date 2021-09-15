@@ -10,6 +10,7 @@
 .contact {
   font-family: "Montserrat";
   font-size: .6em;
+  pointer-events: all;
 }
 .contact-left {
   justify-self: start;
