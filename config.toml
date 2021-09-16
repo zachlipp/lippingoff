@@ -13,7 +13,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   [[menu.main]]
       name = "blog"
       url = "/blog/"
-  
+
   [[menu.main]]
     name = "talks"
     url = "/talks/"
@@ -53,3 +53,4 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [params.reveal_hugo]
   controls = false
+  progress = false
