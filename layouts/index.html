@@ -8,9 +8,11 @@
           <img class="img-square" src="{{ .Site.BaseURL }}img/{{ .Site.Params.avatar }}" alt="Profile">
         </div>
         <div class="bio">
-          <p>Hey, I'm <strong>{{ .Site.Params.author }}</strong>, an engineer in Chicago.</p>
-          <p>As you can probably guess if you've seen <a href="https://twitter.com/zlipp">my Twitter</a>, I try not to take things too seriously.</p>
-          <p>When I am serious, I'm interested in machine learning, reproducible data science, and software architecture. I use this site to teach myself more about lightweight web design, <a href="{{ .Site.BaseURL }}blog/">write</a>, and record <a href="{{ .Site.BaseURL }}talks/">my presentations</a>.</p>
+          <p>Hey, I'm <strong>{{ .Site.Params.author }}</strong>, a homecook, runner, and nerd (in that order) who lives in and loves Portland, OR.</p>
+          <p>I work as a machine learning engineer at <a href="https://www.numerator.com/">Numerator</a>, where I help scale our production-grade deep learning services.
+             In the past, I've worked in machine learning at Nike, Lumere, Crowe and Civis Analytics.</p>
+          <p>I am my best self when I get plenty of time outside. Road running and hiking are staple activities for me. My second best self has to be when I'm cooking. I am a newly converted homecook and I love trying a new recipe out (sometimes on the unwitting).</p>
+          <p>For my nerdiest hobby by far, look no further. I update this site because I like learning how to design and deploy loweight sites with as little manually-written HTML as possible. If that sounds of interest to you, I'm especially proud of <a href="{{ .Site.BaseURL }}talks/">my presentations</a> which I generate using hugo-reveal.
         {{ partial "social.html" . }}
         </div>
       </section>
