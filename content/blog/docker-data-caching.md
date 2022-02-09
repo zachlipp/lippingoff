@@ -24,8 +24,6 @@ I knew I needed a local data cache and I was already using Docker. Here enters m
 
 Yes, Docker's cache works for just fine for data. Here's the map:
 
-{{< tweet 1362843497158619141 >}}
-
  [And here's](https://github.com/zachlipp/snowpiles/blame/b2bb3913ce7db0dde0ea4fd51a56a0e7bbeab524/Dockerfile) the relevant part of my Dockerfile:
 
 ```
