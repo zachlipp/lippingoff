@@ -78,22 +78,12 @@ reveal_hugo:
 {{% fragment %}}
 - Spans can have arbitrary data associated with them. We can call these key-value pairs **tags** or **attributes**
 {{% /fragment %}}
-
----
-
-### Distributed tracing: A brief introduction
-
 {{% fragment %}}
-- Tracing is an open standard. There are tons of open source and vendored tracing tools
-{{% /fragment %}}
-{{% fragment %}}
-- `opentelemetry` sets standards for creating and propogating traces
-{{% /fragment %}}
-{{% fragment %}}
-- `zipkin` and `jaeger` is a common tool for collecting and visualizing traces (here we'll use `jaeger`)
+- Tags tend to be **sparse** and **high-dimensional**. Backends generally store traces in NoSQL databases as a result.
 {{% /fragment %}}
 
 ---
+
 
 ### Example: Fizzbuzz
 
