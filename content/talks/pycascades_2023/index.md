@@ -38,8 +38,36 @@ reveal_hugo:
 
 ---
 
+### Metaphor: Commuting
 
-### Distributed tracing: A brief introduction
+---
+
+### Metaphor: Commuting
+![](figs/commute.svg)
+
+---
+
+### Metaphor: Commuting
+![](figs/duration.svg)
+
+---
+
+### Metaphor: Commuting
+![](figs/duration_trace.svg)
+
+---
+
+### Metaphor: Commuting
+![](figs/tags.svg)
+
+---
+
+### Metaphor: Commuting
+![](figs/tags2.svg)
+
+---
+
+### Quick review
 
 {{% fragment %}}
 - **Traces** follow a request through an entire system
