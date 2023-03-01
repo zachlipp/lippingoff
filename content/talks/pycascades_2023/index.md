@@ -6,6 +6,7 @@ venue: PyCascades 2023
 description: An intermediate look at getting distributed tracing running and finding use for it
 reveal_hugo:
   custom_theme: css/tracing.css
+  transition: none
 ---
 
 
