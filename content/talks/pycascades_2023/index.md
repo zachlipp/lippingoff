@@ -23,7 +23,15 @@ reveal_hugo:
 
 ---
 
-### Distributed tracing: A brief introduction
+### Roadmap
+
+- Tracing introduction
+- Example service and code walkthrough
+- Review of tracing in practice
+
+---
+
+### Some tracing concepts
 
 - Distributed tracing (hereafter tracing) is an observability tool
 - Tracing follows a request through a distributed system
