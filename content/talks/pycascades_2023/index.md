@@ -34,38 +34,42 @@ reveal_hugo:
 
 ---
 
-### Some tracing concepts
+### Distributed tracing concepts?
 
 - Distributed tracing (hereafter tracing) is an observability tool
 - Tracing follows a request through a distributed system
 
 ---
 
-### Metaphor: Commuting
+### Tracing by metaphor
+
+{{% fragment %}}
+Commuting
+{{% /fragment %}}
 
 ---
 
-### Metaphor: Commuting
+### Tracing by metaphor
 ![](figs/commute.svg)
 
 ---
 
-### Metaphor: Commuting
+### Tracing by metaphor
 ![](figs/duration.svg)
 
 ---
 
-### Metaphor: Commuting
+### Tracing by metaphor
 ![](figs/duration_trace.svg)
 
 ---
 
-### Metaphor: Commuting
+### Tracing by metaphor
 ![](figs/tags.svg)
 
 ---
 
-### Metaphor: Commuting
+### Tracing by metaphor
 ![](figs/tags2.svg)
 
 ---
