@@ -25,8 +25,11 @@ reveal_hugo:
 
 ### Roadmap
 
-- Tracing introduction
+- What is distributed tracing?
+- Tracing by metaphor
+- Distributed tracing concepts
 - Example service and code walkthrough
+- How tracing works
 - Review of tracing in practice
 
 ---
