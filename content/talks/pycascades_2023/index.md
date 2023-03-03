@@ -86,11 +86,24 @@ Commuting
 - Spans can have arbitrary data associated with them. We can call these key-value pairs **tags** or **attributes**
 {{% /fragment %}}
 {{% fragment %}}
-- Tags tend to be **sparse** and **high-dimensional**. Backends generally store traces in NoSQL databases as a result.
+- Tags tend to be **sparse** and **high-dimensional**. Backends generally store traces in NoSQL databases as a result
 {{% /fragment %}}
 
 ---
 
+### Tracing tools
+
+{{% fragment %}}
+- Tracing is an open standard. There are tons of open source and vendored tracing tools
+{{% /fragment %}}
+{{% fragment %}}
+- `opentelemetry` sets standards for creating and propogating traces
+{{% /fragment %}}
+{{% fragment %}}
+- `zipkin` and `jaeger` are common tools for collecting and visualizing traces (here we'll use `jaeger`)
+{{% /fragment %}}
+
+---
 
 ### Example: Fizzbuzz
 
@@ -170,46 +183,37 @@ Two ways to think about that question:
 
 ### How does tracing work?
 
-Tracing HTTP requests works by propogating headers through each component of your system.
-
-Two headers are required by the [W3C standards](https://www.w3.org/TR/trace-context/):
-
-{`traceparent`: `...`, `tracestate`: `...`}
-
-Where the `tracestate` is for vendor information
-
----
-
-### How does tracing work?
-
-- The value of the `traceparent` header includes:
-{{% fragment %}}
-  - `version_id`, for opentelemetry, `00`
-{{% /fragment %}}
-{{% fragment %}}
-  - `trace_id`, a 16 bytes hex digit
-{{% /fragment %}}
-{{% fragment %}}
-  - `parent_id` or `span-id`, an 8 bytes hex digit
-{{% /fragment %}}
-{{% fragment %}}
-   - `trace_flags`, for opentelemetry, `00`
-{{% /fragment %}}
+Programs need **context** to associate traces together
 
 {{% fragment %}}
-- Therefore a `traceparent` will look like `f"00-{trace_id}-{span_id}-00"`
+![](figs/context.svg)
+
 {{% /fragment %}}
 
 ---
 
-### What happens from here?
+### What is trace context?
 
-- The application:
 {{% fragment %}}
-  - Records spans
+A context consists of, at a minimum, the `trace_id` and `span_id` of the previous operation
 {{% /fragment %}}
+
 {{% fragment %}}
-  - Consumes headers from requests to determine if this span belongs to an existing trace
+Tracing HTTP requests works by propogating a header called `traceparent` through each component of your system
+
+This header contains the `trace_id` and `span_id` in the format `f"00-{trace_id}-{span_id}-00"`
+{{% /fragment %}}
+
+{{% fragment %}}
+For more information, check out the [W3C standards](https://www.w3.org/TR/trace-context/)
+{{% /fragment %}}
+
+---
+
+### What about the rest of the system?
+
+{{% fragment %}}
+  - The program creates a span associated with a trace
 {{% /fragment %}}
 {{% fragment %}}
   - A collector collects the trace and sends it to a backend service
@@ -223,9 +227,7 @@ Where the `tracestate` is for vendor information
 
 ---
 
-### How do you implement this in Pyton?
-
-Tracing requires application code changes (and, in some cases, build changes).
+### Enough concepts, time for code
 
 ---
 
@@ -236,31 +238,33 @@ Tracing requires application code changes (and, in some cases, build changes).
 {{% /fragment %}}
 {{% fragment %}}
 It's even possible to `autoinstrument` popular servers
-  - `Django`
-  - `Flask`
   - `FastAPI`
+  - `Flask`
+{{% /fragment %}}
+{{% fragment %}}
+We'll look at `diff`s to emphasize what implementing tracing does
 {{% /fragment %}}
 
 ---
 
 ### Configure your exporter
 
-```python
-from opentelemetry import trace
-from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import (
-    OTLPSpanExporter,
-)
-from opentelemetry.sdk.resources import Resource
-from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-
-
-resource = Resource(attributes={"service.name": SERVICE_NAME})
-trace.set_tracer_provider(TracerProvider(resource=resource))
-tracer = trace.get_tracer(__name__)
-otlp_exporter = OTLPSpanExporter(endpoint="http://jaeger:4317", insecure=True)
-span_processor = BatchSpanProcessor(otlp_exporter)
-trace.get_tracer_provider().add_span_processor(span_processor)
+```diff
++ from opentelemetry import trace
++ from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import (
++     OTLPSpanExporter,
++ )
++ from opentelemetry.sdk.resources import Resource
++ from opentelemetry.sdk.trace import TracerProvider
++ from opentelemetry.sdk.trace.export import BatchSpanProcessor
++
++
++ resource = Resource(attributes={"service.name": SERVICE_NAME})
++ trace.set_tracer_provider(TracerProvider(resource=resource))
++ tracer = trace.get_tracer(__name__)
++ otlp_exporter = OTLPSpanExporter(endpoint="http://jaeger:4317", insecure=True)
++ span_processor = BatchSpanProcessor(otlp_exporter)
++ trace.get_tracer_provider().add_span_processor(span_processor)
 ```
 
 ---
@@ -362,14 +366,29 @@ def fizz():
 
 ---
 
+### Python over! Now what?
+
+{{% fragment %}}
+Let's talk about results!
+{{% /fragment %}}
+
+---
+
+### Tracing: Lessons learned
+
+- My team identified a large bottleneck in our own codebase with autoinstrumentation
+- After creating a manual span, we isolated a bottelneck to one of our dependencies
+
+---
+
 ### Is this worth it?
 
 {{% fragment %}}
-Tracing is clearly a complicated solution.
+Tracing is clearly a complicated solution
 {{% /fragment %}}
 
 {{% fragment %}}
-Debugging and monitoring distributed systems is a complicated problem.
+This is a complicated problem
 {{% /fragment %}}
 
 ---
@@ -377,32 +396,31 @@ Debugging and monitoring distributed systems is a complicated problem.
 ### Is it worth it? Alternatives
 
 {{% fragment %}}
-Running a service mesh has observability and security benefits and can provide [some of the functionality](https://linkerd.io/2019/08/09/service-mesh-distributed-tracing-myths/) of tracing, including identifying which services communicate and their latency.
+[Service meshes](https://linkerd.io/2019/08/09/service-mesh-distributed-tracing-myths/) can identify latency
 {{% /fragment %}}
 
 {{% fragment %}}
-There's promising work to approximate tracing in the Envoy service mesh without propogating headers, see Sachin Ashok and Vipul Harsh's [presentation at envoycon last year](https://www.youtube.com/watch?app=desktop&v=xSoF5XRx8l8).
+It's possible to approximate tracing without header propogation, see [Sachin Ashok and Vipul Harsh](https://www.youtube.com/watch?app=desktop&v=xSoF5XRx8l8)
 {{% /fragment %}}
 
 ---
 
-### What else can traces do?
-
-In a [wonderful post](https://copyconstruct.medium.com/distributed-tracing-weve-been-doing-it-wrong-39fc92a857df), Cindy Sridharan suggests other ways of thinking about traces. In particular,
-- Preferring visualizations of interconnected services to the entire system
-- Using traces as an analytical debugging tool to pinpoint the affects of changes in complicated systems
-
----
-
-### What else can traces do?
-
-In response, Dan Luu offers [some concrete examples](https://danluu.com/tracing-analytics/) of questions analyzing traces can answer:
-
+### Is it worth it? Getting more value
 
 {{% fragment %}}
-> - For this service that's having problems, give me a representative set of traces
-> - For this service that has elevated load, show me which upstream service is causing the load
-> - Give me the list of all services that have unusual write amplification to downstream service X
+[**Go beyond the traceview**](https://copyconstruct.medium.com/distributed-tracing-weve-been-doing-it-wrong-39fc92a857df)
+{{% /fragment %}}
+
+{{% fragment %}}
+Services can operate on traces (e.g. demarcating types of traffic)
+{{% /fragment %}}
+
+{{% fragment %}}
+Teams can use traces to directly analyze traffic across service paths
+{{% /fragment %}}
+
+{{% fragment %}}
+[If traces are backed up to a SQL storage (or use a SQL-like tool)]((https://danluu.com/tracing-analytics/), engineers can easily build custom analyses and tools
 {{% /fragment %}}
 
 ---
