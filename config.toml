@@ -47,6 +47,9 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 [markup.goldmark.renderer]
   unsafe = true
 
+[markup.goldmark.parser.attribute]
+  block = true
+
 [params.reveal_hugo]
   controls = false
   progress = false
