@@ -86,6 +86,17 @@ Tracing follows a request through a distributed system
 
 ---
 
+### Tracing by metaphor
+
+{{% fragment %}}
+Knowing all commutes could help you understand:
+- Of people late to work, what route did they take?
+- Why was there so much more traffic on this one street? Where did they come from?
+- How does delay in one system affect the system as a whole?
+{{% /fragment %}}
+
+---
+
 {{< slide class=left >}}
 
 ### Distributed tracing concepts
@@ -222,7 +233,7 @@ Programs need **context** to associate traces together
 ### How tracing works
 
 {{% fragment %}}
-Tracing works by **propogating** HTTP headers through the system
+Tracing works by **propagating** HTTP headers through the system
 {{% /fragment %}}
 
 {{% fragment %}}
@@ -243,10 +254,10 @@ Check out the [W3C standards](https://www.w3.org/TR/trace-context/) for more inf
 - The program creates a span associated with a trace
 {{% /fragment %}}
 {{% fragment %}}
-- A collector collects the trace and sends it to a backend service
+- The tracing client library (`opentelemtry`) sends the span to the the tracing backend (`jaeger`)
 {{% /fragment %}}
 {{% fragment %}}
-- The backend service stores the trace
+- The backend service accepts and stores the span
 {{% /fragment %}}
 {{% fragment %}}
 - A frontend allows users to visualize traces from the backend
@@ -348,8 +359,6 @@ def call_remote_service(
 +    inject(headers)
 -    response = requests.post(url, json={"number": number})
 +    response = requests.post(url, json={"number": number}, headers=headers)
-ders)
-
 
 app = FastAPI()
 +FastAPIInstrumentor.instrument_app(app)
@@ -357,7 +366,30 @@ app = FastAPI()
 
 ---
 
-### Autoinstrumentation: Flask (`buzzer`)
+{{< slide transition="none-out" >}}
+
+### Example system: Code
+#### Flask (`buzzer/main.py`)
+
+```python
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+
+
+@app.route("/", methods=["POST"])
+def buzz():
+    x = request.json["number"]
+    buzz = bool(x % 5 == 0)
+    return jsonify({"result": buzz})
+```
+
+---
+
+{{< slide transition="none-in" >}}
+
+### Example system: Code
+#### Flask (`buzzer/main.py`)
 
 ```diff
 -from flask import Flask, jsonify, request
@@ -382,7 +414,31 @@ def buzz():
 
 ---
 
-### Manual instrumentation (`fizzer`)
+{{< slide transition="none-out" >}}
+
+### Example system: Code
+#### Manual Flask (`fizzer/main.py`)
+
+```python
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+
+
+@app.route("/", methods=["POST"])
+def fizz():
+    x = request.json["number"]
+    fizz = bool(x % 3 == 0)
+    return jsonify({"result": fizz})
+```
+
+---
+
+{{< slide transition="none" >}}
+
+### Example system: Code
+#### Manual Flask (`fizzer/main.py`)
+
 ```diff
 +from opentelemetry import trace
 +from opentelemetry.context import Context
@@ -400,7 +456,7 @@ def fizz():
 +    with tracer.start_as_current_span(
 +        "/", context=FORMAT.extract({"traceparent": traceparent})
 +    ) as fizzspan:
-+        headers = {}
++        headers = {"Content-Type": "application/json"}
 +        inject(headers)
 +        x = request.json["number"]
 +        fizz = bool(x % 3 == 0)
@@ -439,14 +495,7 @@ Let's talk about results!
 
 ---
 
-### Tracing: Lessons learned
-
-- My team identified a large bottleneck in our own codebase with autoinstrumentation
-- After creating a manual span, we isolated a bottelneck to one of our dependencies
-
----
-
-### Is this worth it?
+### Tracing review
 
 {{% fragment %}}
 Tracing is clearly a complicated solution
@@ -458,22 +507,54 @@ This is a complicated problem
 
 ---
 
-### Is it worth it? Alternatives
+{{< slide class="left" >}}
+
+### Tracing review
+#### Lessons from my team
+
+**Positives**:
+
+{{% fragment %}}
+
+- My team identified a large bottleneck in our own codebase with autoinstrumentation
+- After creating a manual span, we isolated a bottleneck to one of our dependencies
+- [Configuring sampling](https://opentelemetry-python.readthedocs.io/en/latest/sdk/trace.sampling.html) is a joy
+
+{{% /fragment %}}
+
+**Negatives**:
+
+{{% fragment %}}
+
+- Tracing is not a core part of our observability in practice
+- We lack the tools to use traces to answer our questions
+
+{{% /fragment %}}
+
+---
+
+{{< slide class=left >}}
+
+### Tracing review
+#### Alternatives
 
 {{% fragment %}}
 [Service meshes](https://linkerd.io/2019/08/09/service-mesh-distributed-tracing-myths/) can identify latency
 {{% /fragment %}}
 
 {{% fragment %}}
-It's possible to approximate tracing without header propogation, see [Sachin Ashok and Vipul Harsh](https://www.youtube.com/watch?app=desktop&v=xSoF5XRx8l8)
+It's possible to approximate tracing without header propagation, see [Sachin Ashok and Vipul Harsh](https://www.youtube.com/watch?app=desktop&v=xSoF5XRx8l8)
 {{% /fragment %}}
 
 ---
 
-### Is it worth it? Getting more value
+{{< slide class=left >}}
+
+### Tracing review
+#### Getting more value from tracing
 
 {{% fragment %}}
-[**Go beyond the traceview**](https://copyconstruct.medium.com/distributed-tracing-weve-been-doing-it-wrong-39fc92a857df)
+**Go beyond the traceview**
 {{% /fragment %}}
 
 {{% fragment %}}
@@ -485,19 +566,25 @@ Teams can use traces to directly analyze traffic across service paths
 {{% /fragment %}}
 
 {{% fragment %}}
-[If traces are backed up to a SQL storage (or use a SQL-like tool)]((https://danluu.com/tracing-analytics/), engineers can easily build custom analyses and tools
+[If traces are backed up to a SQL storage (or use a SQL-like tool)](https://danluu.com/tracing-analytics/), engineers can easily build custom analyses and tools
+{{% /fragment %}}
+
+{{% fragment %}}
+Please read [Cindy Sridharan's terrific post on tracing](https://copyconstruct.medium.com/distributed-tracing-weve-been-doing-it-wrong-39fc92a857df)
 {{% /fragment %}}
 
 ---
 
+{{< slide class=left >}}
+
 ### Summary
 
 {{% fragment %}}
-- Tracing is a valuable observability tool, but its implementation can require substantial changes
+- Because distributed tracing follows request through your whole system, it allows you to answer questions other tools can't
 {{% /fragment %}}
 {{% fragment %}}
-- When considering tracing, consider alternatives that don't require application code changes
+- Implementing distributed tracing can require substantial code changes
 {{% /fragment %}}
 {{% fragment %}}
-- To get the most value from tracing, replicate trace data to a SQL-compatible backend and let developers query it directly
+- To get the most value from tracing, plan to create or deploy tools to move your team beyond the traceview
 {{% /fragment %}}

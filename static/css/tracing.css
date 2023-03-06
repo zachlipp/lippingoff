@@ -71,6 +71,7 @@ body {
 
 .reveal h4 {
   font-size: 1.2em;
+  text-align: center !important;
   margin: 0 0 20px 0; }
 
 .reveal h1 {
