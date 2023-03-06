@@ -6,9 +6,7 @@ venue: PyCascades 2023
 description: An intermediate look at getting distributed tracing running and finding use for it
 reveal_hugo:
   custom_theme: css/tracing.css
-  transition: none
 ---
-
 
 <section data-noprocess class="title-card">
 <h3>
@@ -28,84 +26,106 @@ reveal_hugo:
 - What is distributed tracing?
 - Tracing by metaphor
 - Distributed tracing concepts
-- Example service and code walkthrough
+- Example system: Overview
+- Example system: Jaeger
 - How tracing works
-- Review of tracing in practice
+- Example system: Code
+- Tracing review
 
 ---
 
-### Distributed tracing concepts?
+### What is distributed tracing?
 
-- Distributed tracing (hereafter tracing) is an observability tool
-- Tracing follows a request through a distributed system
+Distributed tracing (hereafter tracing) is an observability tool
+
+Tracing follows a request through a distributed system
 
 ---
 
 ### Tracing by metaphor
 
 {{% fragment %}}
-Commuting
+#### Commuting
 {{% /fragment %}}
 
 ---
 
 ### Tracing by metaphor
+
 ![](figs/commute.svg)
 
 ---
 
+{{< slide transition="none" >}}
+
 ### Tracing by metaphor
+
 ![](figs/duration.svg)
 
 ---
 
+{{< slide transition="none" >}}
+
 ### Tracing by metaphor
+
 ![](figs/duration_trace.svg)
 
 ---
+
+{{< slide transition="none-out" >}}
 
 ### Tracing by metaphor
 ![](figs/tags.svg)
 
 ---
 
+{{< slide transition="none-in" >}}
+
 ### Tracing by metaphor
 ![](figs/tags2.svg)
 
 ---
 
-### Quick review
+{{< slide class=left >}}
+
+### Distributed tracing concepts
 
 {{% fragment %}}
-- **Traces** follow a request through an entire system
+**Traces** follow a request through an entire system
 {{% /fragment %}}
 {{% fragment %}}
-- A trace contains one or more (usually more) **spans** which represent units of work. (A function, a service, etc.)
+**Spans** make up traces
 {{% /fragment %}}
 {{% fragment %}}
-- Spans can have arbitrary data associated with them. We can call these key-value pairs **tags** or **attributes**
+**Tags** or **attributes** record information about spans
 {{% /fragment %}}
 {{% fragment %}}
-- Tags tend to be **sparse** and **high-dimensional**. Backends generally store traces in NoSQL databases as a result
-{{% /fragment %}}
-
----
-
-### Tracing tools
-
-{{% fragment %}}
-- Tracing is an open standard. There are tons of open source and vendored tracing tools
-{{% /fragment %}}
-{{% fragment %}}
-- `opentelemetry` sets standards for creating and propogating traces
-{{% /fragment %}}
-{{% fragment %}}
-- `zipkin` and `jaeger` are common tools for collecting and visualizing traces (here we'll use `jaeger`)
+Tags don't have set schemas
 {{% /fragment %}}
 
 ---
 
-### Example: Fizzbuzz
+{{< slide class=left >}}
+
+### Distributed tracing concepts
+
+{{% fragment %}}
+Tracing is an open standard
+{{% /fragment %}}
+{{% fragment %}}
+Client: `opentelemetry` (formerly `opentracing`)
+{{% /fragment %}}
+{{% fragment %}}
+Server: `jaeger`
+{{% /fragment %}}
+
+---
+
+### Example system: Overview
+
+{{% fragment %}}
+**Fizzbuzz**
+{{% /fragment %}}
 
 {{% fragment %}}
 - Given an integer `x`:
@@ -116,7 +136,7 @@ Commuting
 
 ---
 
-### Example system: Fizzbuzz
+### Example system: Overview
 
 Introducing **FBaaS - FizzBuzz as a Service**
 
@@ -126,46 +146,52 @@ https://github.com/zachlipp/pycascades_demo_2023
 
 ---
 
-### Example system: Fizzbuzz
+### Example system: Overview
 
 ![](figs/flow.svg)
 
 ---
 
-### Example system: Fizzbuzz
+{{< slide class="left" >}}
 
-- `docker-compose` exposes the hub at `localhost:6000`
-- We can send a request for an integer `x` to it with the payload `{"number": x}`
+### Example system: Overview
+
+We have the `hub` running at `localhost:6000`
+
+It accepts JSON payloads `{"number": x}`
+
+We'll use a bash for loop to fizzbuzz numbers 1-15
 
 ---
 
-### Example system: Fizzbuzz
+### Example system: Overview
 
 ![](figs/demo.gif)
 
 ---
 
-### Why is this taking so long?
 
-Let's trace it!
+### Example system: Overview
+
+Seems kind of slow... let's trace it
 
 (Available at branch `tracing-example`)
 
 ---
 
-### Distributed tracing: Visualized
+### Example system: Jaeger
 
 ![](figs/jaeger.png)
 
 ---
 
-### Distributed tracing: Visualized
+### Example system: Jaeger
 
 ![](figs/traces.png)
 
 ---
 
-### Distributed tracing: Visualized
+### Example system: Jaeger
 
 ![](figs/traceview.png)
 
@@ -173,7 +199,7 @@ This is what's called **the traceview**
 
 ---
 
-### What's going on here?
+### How tracing works
 
 Two ways to think about that question:
 1. How does this work under the hood?
@@ -181,57 +207,60 @@ Two ways to think about that question:
 
 ---
 
-### How does tracing work?
+### How tracing works
 
 Programs need **context** to associate traces together
 
 {{% fragment %}}
 ![](figs/context.svg)
-
 {{% /fragment %}}
 
 ---
 
-### What is trace context?
+{{< slide class="left" >}}
+
+### How tracing works
 
 {{% fragment %}}
-A context consists of, at a minimum, the `trace_id` and `span_id` of the previous operation
+Tracing works by **propogating** HTTP headers through the system
 {{% /fragment %}}
 
 {{% fragment %}}
-Tracing HTTP requests works by propogating a header called `traceparent` through each component of your system
-
-This header contains the `trace_id` and `span_id` in the format `f"00-{trace_id}-{span_id}-00"`
+`{"traceparent": "f"00-{trace_id}-{span_id}-00"}`
 {{% /fragment %}}
 
 {{% fragment %}}
-For more information, check out the [W3C standards](https://www.w3.org/TR/trace-context/)
-{{% /fragment %}}
-
----
-
-### What about the rest of the system?
-
-{{% fragment %}}
-  - The program creates a span associated with a trace
-{{% /fragment %}}
-{{% fragment %}}
-  - A collector collects the trace and sends it to a backend service
-{{% /fragment %}}
-{{% fragment %}}
-  - The backend service stores the trace
-{{% /fragment %}}
-{{% fragment %}}
-  - A frontend allows users to visualize traces from the backend
+Check out the [W3C standards](https://www.w3.org/TR/trace-context/) for more information
 {{% /fragment %}}
 
 ---
 
-### Enough concepts, time for code
+{{< slide class="left" >}}
+
+### How tracing works
+
+{{% fragment %}}
+- The program creates a span associated with a trace
+{{% /fragment %}}
+{{% fragment %}}
+- A collector collects the trace and sends it to a backend service
+{{% /fragment %}}
+{{% fragment %}}
+- The backend service stores the trace
+{{% /fragment %}}
+{{% fragment %}}
+- A frontend allows users to visualize traces from the backend
+{{% /fragment %}}
 
 ---
 
-### How do you implement this in Pyton?
+### Example system: Code
+
+![](figs/python-logo-generic.svg)
+
+---
+
+### Example system: Code
 
 {{% fragment %}}
 `opentelemetry` has a rich collection of open source packages
@@ -247,29 +276,65 @@ We'll look at `diff`s to emphasize what implementing tracing does
 
 ---
 
-### Configure your exporter
+### Example system: Code
+#### Configure the exporter
 
-```diff
-+ from opentelemetry import trace
-+ from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import (
-+     OTLPSpanExporter,
-+ )
-+ from opentelemetry.sdk.resources import Resource
-+ from opentelemetry.sdk.trace import TracerProvider
-+ from opentelemetry.sdk.trace.export import BatchSpanProcessor
-+
-+
-+ resource = Resource(attributes={"service.name": SERVICE_NAME})
-+ trace.set_tracer_provider(TracerProvider(resource=resource))
-+ tracer = trace.get_tracer(__name__)
-+ otlp_exporter = OTLPSpanExporter(endpoint="http://jaeger:4317", insecure=True)
-+ span_processor = BatchSpanProcessor(otlp_exporter)
-+ trace.get_tracer_provider().add_span_processor(span_processor)
+{{% fragment %}}
+```python
+from opentelemetry import trace
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import (
+    OTLPSpanExporter,
+)
+from opentelemetry.sdk.resources import Resource
+from opentelemetry.sdk.trace import TracerProvider
+from opentelemetry.sdk.trace.export import BatchSpanProcessor
+
+
+resource = Resource(attributes={"service.name": SERVICE_NAME})
+trace.set_tracer_provider(TracerProvider(resource=resource))
+tracer = trace.get_tracer(__name__)
+otlp_exporter = OTLPSpanExporter(endpoint="http://jaeger:4317", insecure=True)
+span_processor = BatchSpanProcessor(otlp_exporter)
+trace.get_tracer_provider().add_span_processor(span_processor)
+```
+{{% /fragment %}}
+
+---
+
+{{< slide transition="none" >}}
+
+### Example system: Code
+#### FastAPI (`hub/main.py`)
+
+```python
+def call_remote_service(
+    number: float, service: Literal["fizzer", "buzzer"]
+) -> bool:
+    url = get_service_address(service)
+    response = requests.post(url, json={"number": number})
+    response_payload = response.json()
+    return response_payload["result"]
+
+
+app = FastAPI()
+
+
+@app.post("/")
+def fizzbuzz(nc: NumberContainer):
+    number = nc.number
+    fizz = call_remote_service(number, "fizzer")
+    buzz = call_remote_service(number, "buzzer")
+    ...
+
 ```
 
 ---
 
-### Autoinstrumentation: FastAPI (`hub`)
+{{< slide transition="none" >}}
+
+### Example system: Code
+#### FastAPI (`hub/main.py`)
+
 
 ```diff
 +from opentelemetry.propagate import inject
