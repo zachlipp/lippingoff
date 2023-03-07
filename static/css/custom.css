@@ -1,3 +1,5 @@
+@import url(./fonts/montserrat/montserrat.css);
+
 html, body {
   border-top: 3px solid #440154;
 }
@@ -46,8 +48,8 @@ div.footer {
   justify-content: center;
 }
 
-.img-square {
-  width: 30%;
+.profile {
+  max-width: 40%;
 }
 
 .avatar {
@@ -58,7 +60,11 @@ div.footer {
 .bio {
   font-size: 16px;
   max-width: 100%;
-  display: inline-block;
+  text-align: left;
+}
+
+.bio h2 {
+  font-family: Montserrat, sans-serif;
 }
 
 .twitter-tweet {

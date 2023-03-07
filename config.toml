@@ -10,6 +10,11 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     post = "/:slug/"
 
 [menu]
+
+  [[menu.main]]
+      name = "twitter"
+      url = "https://twitter.com/zlipp"
+
   [[menu.main]]
       name = "blog"
       url = "/blog/"
@@ -34,11 +39,6 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     MathJaxCDN = "//cdn.bootcss.com"
     MathJaxVersion = "2.7.1"
 
-[params.social]
-  Github = "zachlipp"
-  Twitter = "zlipp"
-  LinkedIn = "zachlipp"
-
 [outputFormats.Reveal]
   baseName = "index"
   mediaType = "text/html"
@@ -46,6 +46,9 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [markup.goldmark.renderer]
   unsafe = true
+
+[markup.goldmark.parser.attribute]
+  block = true
 
 [params.reveal_hugo]
   controls = false
