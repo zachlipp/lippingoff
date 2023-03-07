@@ -190,6 +190,33 @@ Seems kind of slow... let's trace it
 
 ---
 
+{{< slide class="left" >}}
+
+### Example system: Jaeger
+
+From the `tracing-example` branch, run
+
+```
+docker-compose --profile tracing up
+```
+
+to run the traced service
+
+{{% fragment %}}
+The `hub` service is still exposed at `localhost:6000`
+{{% /fragment %}}
+
+{{% fragment %}}
+The `jaeger` UI is now exposed at `localhost:16686`
+{{% /fragment %}}
+
+{{% fragment %}}
+After running some requests through the `hub`, we can view their traces at `localhost:16686`
+{{% /fragment %}}
+
+
+---
+
 ### Example system: Jaeger
 
 ![](figs/jaeger.png)
@@ -355,7 +382,7 @@ def fizzbuzz(nc: NumberContainer):
 def call_remote_service(
   number: int, service: Literal["fizzer", "buzzer"]
 )
-+    headers = {}
++    headers = {"Content-Type": "application/json"}
 +    inject(headers)
 -    response = requests.post(url, json={"number": number})
 +    response = requests.post(url, json={"number": number}, headers=headers)
