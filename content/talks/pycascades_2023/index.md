@@ -1,7 +1,7 @@
 ---
 title: Implementing Distributed Tracing
 outputs: reveal
-date: 2023-01-01
+date: 2023-03-18
 venue: PyCascades 2023
 description: An intermediate look at getting distributed tracing running and finding use for it
 reveal_hugo:
@@ -16,7 +16,7 @@ reveal_hugo:
 
   Senior Machine Learning Engineer, Numerator
 
-  24 February 2023
+  18 March 2023
 </section>
 
 ---
