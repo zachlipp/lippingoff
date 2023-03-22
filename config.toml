@@ -30,11 +30,6 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     custom_css = ["css/custom.css"]
     slides_css = ["css/slides.css"]
     custom_js = []
-    # options for highlight.js (version, additional languages, and theme)
-    highlightjsVersion = "9.11.0"
-    highlightjsCDN = "//cdn.bootcss.com"
-    highlightjsLang = ["python", "r", "yaml"]
-    highlightjsTheme = "github"
 
     MathJaxCDN = "//cdn.bootcss.com"
     MathJaxVersion = "2.7.1"
@@ -44,11 +39,25 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
   mediaType = "text/html"
   isHTML = true
 
-[markup.goldmark.renderer]
-  unsafe = true
-
-[markup.goldmark.parser.attribute]
-  block = true
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ''
+    hl_inline = false
+    lineAnchors = ''
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    noHl = false
+    style = 'doom-one'
+    tabWidth = 4
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.goldmark.parser.attribute]
+    block = true
 
 [params.reveal_hugo]
   controls = false

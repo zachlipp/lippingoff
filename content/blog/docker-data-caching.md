@@ -26,7 +26,7 @@ Yes, Docker's cache works for just fine for data. Here's the map:
 
  [And here's](https://github.com/zachlipp/snowpiles/blame/b2bb3913ce7db0dde0ea4fd51a56a0e7bbeab524/Dockerfile) the relevant part of my Dockerfile:
 
-```
+{{< highlight docker >}}
 COPY download_snow_maps.sh /home
 
 WORKDIR home
@@ -36,20 +36,19 @@ RUN ./download_snow_maps.sh
 COPY snowpiles.sh .
 
 ENTRYPOINT ./snowpiles.sh
-```
+{{</ highlight >}}
 
 The `COPY/RUN` layer pairing just for `download_snow_maps.sh` ensures Docker's cache of the downloaded maps won't get discarded if other files in the directory change. This let me debug and eventually finish the actual map generation code (`snowpiles.sh`) without pulling more maps. As well, the actual [data pulling code](https://github.com/zachlipp/snowpiles/blob/b2bb3913ce7db0dde0ea4fd51a56a0e7bbeab524/download_snow_maps.sh#L7) could now be wonderfully ignorant:
 
-```
+{{< highlight bash >}}
 TODAY=$(date -I)
 PAST=$(date -I -d "$TODAY - 4 months")
 ...
 until [[ $PAST == $TODAY ]]; do
 ...
-```
+{{</ highlight >}}
 
 I used a stale cache of data until I wanted to finish the map, then I just rebuilt the Docker image without cache (`docker build --no-cache`) to produce the final animation.
-
 
 ## Oh God, it works how?!
 
@@ -58,12 +57,10 @@ In retrospect, maybe "wonderfully ignorant" code isn't laudable. Problems includ
 - The builds are particularly ugly. Builds shouldn't run scripts that fetch data, especially long-running and potentially intrusive ones.
 
 - Caching the data pull obfuscates when I last updated the map - *I can't just rely on when I last ran the container!* Instead, I have to use `docker history` to find the layer created by executing `./download_snow_maps.sh`. Atrocious.
-
-   ```
+{{< highlight stdout >}}
    ➜ docker history snowpiles | grep 'download_snow'
    4e6770bac83f   5 days ago     /bin/sh -c ./download_snow_maps.sh              183MB
-   
-   ```
+{{</ highlight >}}
 
 - We know our data source regularly updates (daily in this case) and that every update of source data alters the produced visual. This means **our result depends on our build time**. I am one `docker system prune` away from a different result, and colleagues would be guaranteed one unless we synchonize when we build. I cannot repent enough.
 

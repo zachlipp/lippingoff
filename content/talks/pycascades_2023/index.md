@@ -281,7 +281,7 @@ Check out the [W3C standards](https://www.w3.org/TR/trace-context/) for more inf
 - The program creates a span associated with a trace
 {{% /fragment %}}
 {{% fragment %}}
-- The tracing client library (`opentelemtry`) sends the span to the the tracing backend (`jaeger`)
+- The tracing client library (`opentelemetry`) sends the span to the the tracing backend (`jaeger`)
 {{% /fragment %}}
 {{% fragment %}}
 - The backend service accepts and stores the span

@@ -1,5 +1,5 @@
 ---
-title: Cute math trick and some tips for proofs 
+title: Cute math trick and some tips for proofs
 author: Zach Lipp
 date: '2019-07-14'
 slug: abstention-trick
@@ -9,7 +9,7 @@ tags: []
 
 # Cute math trick and some tips for proofs
 
-I had the privilege of attending [ICML 2019](https://icml.cc/Conferences/2019) with some colleagues last month, and I've started working through some of the papers that stood out to me. First on the docket: [*Combating Label Noise in Deep Learning Using Abstention*.](https://arxiv.org/abs/1905.10964) Key idea: When classifying $k$  variables, create a $k+1$ category, codify the extra class as "choosing to abstain", and then train your model to abstain explicitly rather than deriving abstention after the fact based on classification scores.  
+I had the privilege of attending [ICML 2019](https://icml.cc/Conferences/2019) with some colleagues last month, and I've started working through some of the papers that stood out to me. First on the docket: [*Combating Label Noise in Deep Learning Using Abstention*.](https://arxiv.org/abs/1905.10964) Key idea: When classifying $k$  variables, create a $k+1$ category, codify the extra class as "choosing to abstain", and then train your model to abstain explicitly rather than deriving abstention after the fact based on classification scores.
 
 ## The trick
 
@@ -17,9 +17,7 @@ I was hitting some issues with the very first formula in the paper (I'm new to r
 
 The formula
 
-$$
-{L}(x_j) = (1 - p_{k+1})(-\sum^{k}_{i=1} t_i \log \frac{p_i}{1 - p_{k+1}}) + \alpha \log \frac{1}{1 - p_{k+1}}
-$$
+<div>$${L}(x_j) = (1 - p_{k+1})(-\sum^{k}_{i=1} t_i \log \frac{p_i}{1 - p_{k+1}}) + \alpha \log \frac{1}{1 - p_{k+1}}$$</div>
 
 Gets [translated to](https://github.com/thulas/dac-label-noise/blob/542f3cf6442e2095cf1be7215797da5c32c1728a/dac_loss.py#L122)
 
@@ -35,8 +33,9 @@ h_c = F.cross_entropy(input_batch[:,0:-1],target_batch,reduce=False)
 
 Huh? What happened to $ \log \frac{p_i}{1 - p_{k+1}} $? It took me a few tries to convince myself, but these are actually equivalent.
 
-Even after I was convinced, I had to chew on the proof for a bit. I revisited the problem after a long weekend off, and it's pretty slick. 
+Even after I was convinced, I had to chew on the proof for a bit. I revisited the problem after a long weekend off, and it's pretty slick.
 
+<div>
 $$
 \begin{equation}
   \begin{split}
@@ -51,9 +50,11 @@ $$
   \end{split}
 \end{equation}
 $$
+</div>
 
 This means that
 
+<div>
 $$
 \begin{equation}
   \begin{split}
@@ -64,6 +65,7 @@ $$
   \end{split}
 \end{equation}
 $$
+</div>
 
 Pretty cool stuff, but definitely deserved a comment!
 
