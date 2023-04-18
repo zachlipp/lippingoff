@@ -75,24 +75,44 @@ div.footer {
 
 .talks {
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: minmax(50px, 1fr) 50px;
-  gap: 0px 30px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(1fr, 50px) minmax(1fr, 50px);
   grid-template-areas:
-    "date title"
-    "venue description";
-  margin-bottom: 1px;
+    "title description"
+    "links venue";
+  margin-bottom: 10px;
+  font-size: 1.15em;
 }
 
-.talks > .date {
-  grid-area: date;
-}
+
 .talks > .title {
   grid-area: title;
-}
-.talks > .venue {
-  grid-area: venue;
+  margin-right: 10px;
+  margin-bottom: 5px;
 }
 .talks > .description {
   grid-area: description;
+}
+.talks > .links {
+  grid-area: links;
+}
+.talks > .venue {
+  .grid-area: venue;
+}
+.talks h4 {
+  margin: 0px;
+  font-family: Montserrat, Helvetica, sans-serif;
+  font-size: 1.4em;
+}
+.container h1 {
+  font-family: Montserrat, Helvetica, sans-serif;
+}
+.talks .links p {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+hr {
+  border: none;
+  border-top: 1px dashed;
+  height: 1px;
 }

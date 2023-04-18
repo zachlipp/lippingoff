@@ -9,23 +9,30 @@
             <div class="panel-body">
             {{ range .Data.Pages.ByPublishDate.Reverse }}
               <div class="talks">
-                <div class="date">
-                  <h5>
-                    {{ .Date.Format "January 2, 2006" }}
-                  </h5>
-                 </div>
                  <div class="title">
-                   <h5 style="text-align: left">
-                    <strong><a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></strong>
-                  </h5>
+                   <h4>
+                     <strong>{{ .Title | markdownify }}</strong>
+                  </h4>
                 </div>
-                <div class="venue">
-                  {{ .Params.Venue | markdownify }}
+                <div class="links">
+                  <p>
+                  {{ if .Params.recording_url }}
+                  <a href="{{ .RelPermalink }}/#/">Slides</a>, <a href="{{ .Params.recording_url}}">Recording</a>
+                  {{ else }}
+                  <a href="{{ .RelPermalink }}/#/">Slides</a>
+                  {{ end }}
+                  </p>
                 </div>
-                <div class="description">
-                    {{ .Params.Description | markdownify}}
-                </div>
+              <div class="description">
+                <p>{{ .Params.Description | markdownify}}</p>
+              </div>
+              <div class="venue">
+                <p>
+                Presented at <b>{{ .Params.venue | markdownify }}</b> in {{ .Date.Format "January 2006" }}
+                </p>
+              </div>
             </div>
+            <hr>
             {{ end }}
             </div>
           </div>
