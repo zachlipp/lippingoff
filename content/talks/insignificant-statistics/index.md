@@ -1,5 +1,5 @@
 ---
-title: "Insignificant Statistics: What statistical significance means, why it's broken, and how to fix it"
+title: "Insignificant Statistics"
 outputs: Reveal
 date: 2020-01-15
 venue: ChiPy (Chicago Python User Group)
@@ -8,7 +8,7 @@ reveal_hugo:
   custom_theme: css/base.css
 ---
 
-# Insignificant Statistics 
+# Insignificant Statistics
 ### What statistical significance means, why it's broken, and how to fix it
 
 Zach Lipp
@@ -19,11 +19,11 @@ Senior Software Engineer, Lumere
 
 ---
 
-## What is statistical significance? 
+## What is statistical significance?
 
 ---
 
-###  Significance 101 
+###  Significance 101
 - We want to know whether our data signifies a real difference or one that could just be random
 {{% fragment %}}
 - We use a very specific test (or "tool") to determine significance
@@ -37,7 +37,7 @@ Senior Software Engineer, Lumere
 ### Example: Income Distribution
 - Let's say we compare average income between groups and find differences
 {{% fragment %}}
-- One we expect: Software engineers vs. librarians 
+- One we expect: Software engineers vs. librarians
 {{% /fragment %}}
 {{% fragment %}}
 - One that surprises us: People born on even-numbered dates vs. people born on odd-numbered dates
@@ -45,7 +45,7 @@ Senior Software Engineer, Lumere
 
 ---
 
-### Significance 201 
+### Significance 201
 
 - The standard measure of significance is whether the "p-value" of a statistical test is below the threshold of ($p <= 0.05$)
 - If the observed values came from the same distribution, we would see results this or more extreme only 5% of the time
@@ -277,7 +277,7 @@ df.head()
       <td>NaN</td>
     </tr>
   </tbody>
-</table>   
+</table>
 
 ---
 
@@ -380,7 +380,7 @@ Significant result! MAYOR'S OFFICE (p=3.2436138948614145e-11)
 Significant result! ANIMAL CONTRL (p=2.2675557130192936e-11)
 Significant result! BUDGET & MGMT (p=0.0003868357815750312)
 
- -------------------------------------------------- 
+ --------------------------------------------------
 
 In total, 55.56% of results are statistically significantly different.
 If there were no differences between groups, we'd expect 5% of results to differ at this level by chance alone.
@@ -427,7 +427,7 @@ Significant result! GALLAGHER (p=0.008540663678927892)
 Significant result! MORGAN (p=0.028299753474974314)
 Significant result! DOYLE (p=0.040687043599224856)
 
- -------------------------------------------------- 
+ --------------------------------------------------
 
 In total, 26.0% of results are statistically significantly different.
 If there were no differences between groups, we'd expect 5% of results to differ at this level by chance alone.
@@ -467,7 +467,7 @@ Significant result! MATOS (p=0.025381697838516334)
 Significant result! STONE (p=0.04185455282173281)
 Significant result! ALMANZA (p=0.0317423466959263)
 
- -------------------------------------------------- 
+ --------------------------------------------------
 
 In total, 3.4% of results are statistically significantly different.
 If there were no differences between groups, we'd expect 5% of results to differ at this level by chance alone.
@@ -476,7 +476,7 @@ If there were no differences between groups, we'd expect 5% of results to differ
 
 ---
 
-### Application: Summary 
+### Application: Summary
 
 - We never see the for loops
 - We don't know how many comparisons occurred
@@ -491,7 +491,7 @@ If there were no differences between groups, we'd expect 5% of results to differ
 
 ---
 
-## What do we do? 
+## What do we do?
 
 ---
 
