@@ -1,8 +1,6 @@
 # Insignificant Statistics
 ## What statistical significance means, why it's broken, and how to fix it
 
-Date: 15 January 2020
-
 Some file descriptions:
 - `slides.md`: The slides for my talk
 - `graphs.py`: The code to generate matplotlib graphs used in this talk
