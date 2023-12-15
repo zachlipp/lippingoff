@@ -1,5 +1,14 @@
 @import url(./fonts/montserrat/montserrat.css);
 
+h1, h2, h3, h4 {
+  font-family: Montserrat;
+}
+
+.blog-post h3 a {
+  color: black;
+  font-family: Montserrat;
+}
+
 html, body {
   border-top: 3px solid #440154;
 }
