@@ -1,0 +1,13 @@
+{{ $start := (time.AsTime (.Param "start_date") ).Format "January 2006" }}
+{{ $end_date := (.Param "end_date") }}
+{{ if $end_date }}
+  {{ $end := (time.AsTime ($end_date)).Format "January 2006" }}
+  {{ if eq $end $start }}
+    {{ $start }}
+  {{ else }}
+    {{ $start }} - {{ (time.AsTime ($end_date) ).Format "January 2006" }}
+  {{ end }}
+{{ else }}
+  {{ $start }} - Present
+{{ end }}
+

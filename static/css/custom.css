@@ -1,7 +1,7 @@
 @import url(./fonts/montserrat/montserrat.css);
 
 h1, h2, h3, h4 {
-  font-family: Montserrat;
+  font-family: Montserrat, Helvetica, sans-serif;
 }
 
 .blog-post h3 a {
@@ -93,16 +93,39 @@ div.footer {
   font-size: 1.15em;
 }
 
+.projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(1fr, 50px) minmax(1fr, 50px);
+  grid-template-areas:
+    "title description"
+    "links description";
+  margin-bottom: 10px;
+  font-size: 1.15em;
+}
+
+
 
 .talks > .title {
   grid-area: title;
   margin-right: 10px;
   margin-bottom: 5px;
 }
-.talks > .description {
+
+.projects > .title {
+  grid-area: title;
+}
+
+.projects h3 {
+  color: black;
+  margin-top: 0px;
+  font-family: Montserrat;
+}
+
+.talks > .description, .projects > .description {
   grid-area: description;
 }
-.talks > .links {
+.talks > .links, .projects > .links {
   grid-area: links;
 }
 .talks > .venue {
@@ -113,9 +136,11 @@ div.footer {
   font-family: Montserrat, Helvetica, sans-serif;
   font-size: 1.4em;
 }
-.container h1 {
+
+.navbar  {
   font-family: Montserrat, Helvetica, sans-serif;
 }
+
 .talks .links p {
   font-size: 1.2em;
   font-weight: bold;
