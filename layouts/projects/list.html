@@ -1,0 +1,65 @@
+{{ partial "head" . }}
+
+<body>
+  <div id="wrap">
+    <!-- Header -->
+    {{ partial "header" . }}
+    <div class="container">
+      <h1>Major projects</h1>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          {{ $major := where .Pages "Params.major" true }}
+          {{ range ($major.ByParam "start_date") }}
+          <div class="projects">
+            <div class="title">
+              <h3>
+                <strong>{{ .Title | markdownify }}</strong>
+              </h3>
+            </div>
+            <div class="date">
+              {{ partial "date_range" . }}
+            </div>
+            <div>
+              <a href={{ .Params.link }}>Link</a>
+            </div>
+            <div class="description">
+              <p>{{ .Params.Description | markdownify}}</p>
+            </div>
+          </div>
+          <hr>
+          {{ end }}
+        </div>
+        </div>
+        <h1>Examples and proofs of concept</h1>
+        <div class="panel panel-default">
+        <div class="panel-body">
+        {{ $minor := where .Pages "Params.major" nil }}
+        {{ range ($minor.ByParam "start_date").Reverse }}
+        <div class="projects">
+          <div class="title">
+            <h3>
+              <strong>{{ .Title | markdownify }}</strong>
+            </h3>
+          </div>
+          <div class="date">
+            {{ partial "date_range" . }}
+          </div>
+          <div>
+            <a href={{ .Params.link }}>Link</a>
+          </div>
+          <div class="description">
+            <p>{{ .Params.Description | markdownify}}</p>
+          </div>
+        </div>
+        <hr>
+        {{ end }}
+        </div>
+        </div>
+
+      </div>
+    </div>
+  <!-- Footer -->
+  {{ partial "footer" . }}
+</body>
+
+</html>
