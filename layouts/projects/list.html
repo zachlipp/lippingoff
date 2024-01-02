@@ -13,14 +13,11 @@
           <div class="projects">
             <div class="title">
               <h3>
-                <strong>{{ .Title | markdownify }}</strong>
+                <a href={{ .Params.link}}><strong>{{ .Title | markdownify }}</strong></a>
               </h3>
             </div>
             <div class="date">
               {{ partial "date_range" . }}
-            </div>
-            <div>
-              <a href={{ .Params.link }}>Link</a>
             </div>
             <div class="description">
               <p>{{ .Params.Description | markdownify}}</p>
@@ -38,14 +35,11 @@
         <div class="projects">
           <div class="title">
             <h3>
-              <strong>{{ .Title | markdownify }}</strong>
+              <a href={{ .Params.link}}><strong>{{ .Title | markdownify }}</strong></a>
             </h3>
           </div>
           <div class="date">
             {{ partial "date_range" . }}
-          </div>
-          <div>
-            <a href={{ .Params.link }}>Link</a>
           </div>
           <div class="description">
             <p>{{ .Params.Description | markdownify}}</p>
