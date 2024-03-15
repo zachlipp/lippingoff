@@ -20,6 +20,18 @@ h3 {
   color: #26828E;
 }
 
+.container-alert {
+  background-color: #f2bcb8aa;
+  padding: 1em;
+  font-size: 15px;
+}
+
+.container-warning {
+  background-color: #fbe58caa;
+  padding: 1em;
+  font-size: 15px;
+}
+
 a:hover {
   color: #440154;
 }

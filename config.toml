@@ -24,7 +24,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     url = "/projects/"
 
 [params]
-    avatar = "lips.png"
+    avatar = "helens_selfie.png"
     author = "Zach Lipp"
     description = "Zach's digital playground"
     custom_css = ["css/custom.css"]
