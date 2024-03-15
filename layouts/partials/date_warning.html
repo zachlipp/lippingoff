@@ -1,0 +1,11 @@
+{{ $time_diff := time.Now.Sub .Date }}
+{{ $years_ago := math.Floor (div $time_diff.Hours (mul 24 365)) }}
+{{ if (ge $years_ago 5) }}
+<div class="container-alert">
+  🚨 This post is over 5 years old 🚨
+</div>
+{{ else if (ge $years_ago 1) }}
+<div class="container-warning">
+  ⚠️  This post is over a year old ⚠️
+</div>
+{{ end }}
