@@ -1,4 +1,6 @@
 /* https://css-tricks.com/using-netlify-forms-and-netlify-functions-to-build-an-email-sign-up-widget/ */
+import fetch from 'node-fetch';
+
 exports.handler = async event => {
   const email = JSON.parse(event.body).payload.email
   console.log(`Recieved a submission: ${email}`)
