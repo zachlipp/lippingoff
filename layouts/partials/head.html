@@ -45,6 +45,9 @@
     {{ range .Site.Params.custom_css }}
     <link rel="stylesheet" href="{{ $.Site.BaseURL}}{{ . }}">
     {{ end }}
+    {{ range .Site.Params.custom_js -}}
+    <script type="text/javascript" src="{{ $.Site.BaseURL}}{{ . }}"></script>
+    {{- end }}
     {{ `<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>

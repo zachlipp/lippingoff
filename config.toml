@@ -29,7 +29,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     description = "Zach's digital playground"
     custom_css = ["css/custom.css"]
     slides_css = ["css/slides.css"]
-    custom_js = []
+    custom_js = ["js/email_form.js"]
 
     MathJaxCDN = "//cdn.bootcss.com"
     MathJaxVersion = "2.7.1"
