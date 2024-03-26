@@ -6,6 +6,8 @@ export const handler = async event => {
     headers: {
       Authorization: `Token ${ process.env.BUTTONDOWN_KEY }`,
       "Content-Type": "application/json",
+      "Access-Control-Allow-Origin": "https://api.buttondown.email",
+      "Access-Control-Allow-Methods": "GET, POST",
     },
     body: JSON.stringify({ email }),
   })
