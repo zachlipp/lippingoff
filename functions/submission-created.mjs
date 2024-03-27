@@ -3,6 +3,7 @@ export const handler = async event => {
   const email = JSON.parse(event.body).payload.email
   return fetch("https://api.buttondown.email/v1/subscribers", {
     method: "POST",
+    mode: "cors",
     headers: {
       Authorization: `Token ${ process.env.BUTTONDOWN_KEY }`,
       "Content-Type": "application/json",
