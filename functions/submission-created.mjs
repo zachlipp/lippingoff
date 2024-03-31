@@ -3,13 +3,9 @@ export const handler = async event => {
   const email = JSON.parse(event.body).payload.email
   return fetch("https://api.buttondown.email/v1/subscribers", {
     method: "POST",
-    mode: "cors",
     headers: {
       Authorization: `Token ${ process.env.BUTTONDOWN_KEY }`,
       "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "Content-Type, Origin",
-      "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
     },
     body: JSON.stringify({ email }),
   })
@@ -23,6 +19,5 @@ export const handler = async event => {
       console.log(data)
       return { statusCode: 200 }
     })
-    //.then({statusCode: response.status, body: response.text()})
     .catch(error => ({ statusCode: 422, body: String(error) }))
 }
