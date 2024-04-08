@@ -2,6 +2,13 @@ h1, h2, h3, h4 {
   font-family: Montserrat, Helvetica, sans-serif;
 }
 
+img {
+  max-width: 750px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .blog-post h3 a {
   color: black;
   font-family: Montserrat;
