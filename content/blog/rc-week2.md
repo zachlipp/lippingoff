@@ -31,7 +31,7 @@ Nothing for code, unfortunately. I did actually clean up and finish putting toge
 
 ## Coolest thing I learned of the week
 
-This week, I saw two _Build `x` from scratch_ style presentations at the hub: Alex Petros building a dynamic website from an empty directory and [Maud Gautier](https://maudgautier.github.io/) reimplementing the Bitcask database with just base Python. It is so cool to be around this energy and this approach to learning. This week, though, the _coolest_ thing may actually be the _most cursed_ thing: I am very confused that HTML forms only support `GET` and `POST` methods and not, say, `DELETE`.
+This week, I saw two _Build `x` from scratch_ style presentations at the hub: [Alexander Petros](https://alexanderpetros.com/) building a dynamic website from an empty directory and [Maud Gautier](https://maudgautier.github.io/) reimplementing the Bitcask database with just base Python. It is so cool to be around this energy and this approach to learning. This week, though, the _coolest_ thing may actually be the _most cursed_ thing: I am very confused that HTML forms only support `GET` and `POST` methods and not, say, `DELETE`.
 
 ## Side quest of the week
 
