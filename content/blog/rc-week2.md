@@ -39,7 +39,7 @@ Come on. Look at that entertainment center again. What a beauty. Yes, the cabine
 
 ## Other RC work of the week
 - Coordinated some folks who are interested in Crafting Interpreters
-- Paired with Benjamin Arnav on a very cool project they've been working on for a while. I got to see Selinium code in action; it was fun.
+- Paired with [Benjamin Arnav](https://benjaminarnav.com) on a very cool project they've been working on for a while. I got to see Selinium code in action; it was fun.
 - Plenty of 1-on-1s
 
 ## Things I want to do better next week
