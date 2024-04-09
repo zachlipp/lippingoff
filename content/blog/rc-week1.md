@@ -1,7 +1,7 @@
 ---
 title: Recurse Center Week 1
 author: Zach
-date: 2024-03-25T00:00:00
+date: 2024-03-31
 slug: rc-week-1
 tags: ["rc"]
 ---
