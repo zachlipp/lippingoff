@@ -99,6 +99,15 @@ div.footer {
   margin-right: auto;
 }
 
+.posts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: minmax(1fr, 50px);
+  grid-template-areas:
+    "title date";
+  margin-bottom: 10px;
+}
+
 .talks {
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -8,14 +8,14 @@
           <div class="panel panel-default">
             <div class="panel-body">
             {{ range .Data.Pages.ByPublishDate.Reverse }}
-              <div class="row">
+              <div class="posts">
                 <div class="col-sm-4 col-md-4 col-lg-4">
-                  <h5 style="text-align: right">
+                  <h5 class="date">
                     {{ .Date.Format "January 2, 2006" }}
                   </h5>
                  </div>
                  <div class="col-sm-8 col-md-8 col-lg-8">
-                   <h5 style="text-align: left">
+                   <h5 class="title">
                     <strong><a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></strong>
                   </h5>
                 </div>
