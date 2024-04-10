@@ -48,7 +48,7 @@ Nothing jumps out at me!
 
 ## Flowers of the week
 
-Have you ever wondered what your favorite GitHub repo sounds like? Thanks to Garrett Bodley's _[Turn Your SHA1 into Music If You Want to Do That For Some Reason](https://garrett-bodley.github.io/SHAlala/)_, you don't have to. (Pro-tip: Opt for the McCoy Tyner option to really feel those hashes.)
+Have you ever wondered what your favorite GitHub repo sounds like? Thanks to [Garrett Bodley](https://garrett-bodley.github.io/)'s _[Turn Your SHA1 into Music If You Want to Do That For Some Reason](https://garrett-bodley.github.io/SHAlala/)_, you don't have to. (Pro-tip: Opt for the McCoy Tyner option to really feel those hashes.)
 
 ## Quote of the week
 
