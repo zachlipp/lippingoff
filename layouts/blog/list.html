@@ -8,6 +8,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
             {{ range .Data.Pages.ByPublishDate.Reverse }}
+              {{ if not (in .Params.tags "rc-journal" ) }}
               <div class="posts">
                 <div class="col-lg-8">
                   <h5 class="date">
@@ -20,6 +21,7 @@
                   </h5>
                 </div>
               </div>
+              {{ end }}
             {{ end }}
             </div>
           </div>
