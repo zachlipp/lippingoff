@@ -8,6 +8,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
             {{ range .Data.Pages.ByPublishDate.Reverse }}
+              {{ if not (in .Params.tags "unlisted" ) }}
               <div class="talks">
                  <div class="title">
                    <h4>
@@ -33,6 +34,7 @@
               </div>
             </div>
             <hr>
+            {{ end }}
             {{ end }}
             </div>
           </div>

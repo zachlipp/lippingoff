@@ -3,7 +3,7 @@ title: Recurse Center Week 4
 author: Zach
 date: 2024-04-22
 slug: rc-week-4
-tags: ["rc-journal"]
+tags: ["unlisted"]
 ---
 
 
