@@ -17,7 +17,7 @@ Consider a language model as a black box, much the way we might use the ChatGPT 
 We translate our question by **encoding** it, or converting it toa sequence of numbers. The model outputs more numbers, which are **decoded** back to tokens.
 
 <details>
-<summary>Quick aside on terms</summary>
+<summary>ℹ️  A quick aside on terms</summary>
 Encoding and decoding are overloaded terms. While they do refer to translating language (or other data) to and from model space, they also refer to translating language (like these words!) to bytes the computer can understand and back. To make matters worse, models based on the Transformer architecture - like GPT2, analyzed in this paper, and ChatGPT - contain large blocks called <b>encoders</b> and <b>decoders</b>. Yuck.
 </details>
 
@@ -30,8 +30,8 @@ Sampling is concerned with the decoding part of this diagram. Models generally w
 On their own, these scores are meaningless. We often normalize them using a function called **softmax** which let's us interpret them as probabilities.
 
 <details>
-<summary>What does <i>interpret them as probabilities</i> mean?</summary>
-The softmax function sets all of our values to be between 0 and 1, with the constraint that all of these numbers sum to 1. This is also true of probabilities. That said, there aren't constraints to calibrate these probabilities: A token with a softmax output of <code>0.66</code> may not actually be correct 66% of the time. I'm most comfortable calling these <b>probabilities</b>, <b>psuedo-probabilities</b>, though some people use <b>confidence scores</b>. I use <b>probabilities</b> throughout this piece.
+<summary>ℹ️ What does <i>interpret them as probabilities</i> mean?</summary>
+The softmax function sets all of our values to be between 0 and 1, with the constraint that all of these numbers sum to 1. This is also true of probabilities. That said, there aren't constraints to calibrate these probabilities: A token with a softmax output of <code>0.66</code> may not actually be correct 66% of the time. I'm most comfortable calling these <b>probabilities</b>, <b>psuedo-probabilities</b>, though some people use <b>confidence scores</b>. I use <b>probabilities</b> throughout this piece as the visualization app's sampling is properly calibrated.
 </details>
 
 ![](/post/visualizing_sampling/softmax.png)
@@ -142,6 +142,8 @@ I've added a fifth and final input to the app: A slider for setting **top-p**. I
 <iframe loading="lazy" class="p5" src="/examples/sampling/3"></iframe>
 {{< /rotate >}}
 
+The authors find top-p sampling to perform very well with `p=0.95`. They do not scale temperature in their nucleus sampling experiments, so this saves a ton of effort in manual tuning.
+
 ## Closing
 
-I enjoyed playing with this paper a lot. In particular, getting these examples to work in JavaScript looks nothing like the PyTorch (or other deep learning framework) code, so I feel like I learned this twice. If you're still curious about this space, I highly recommend reading the paper yourself, I skipped a lot of the good parts.
+That's what I've got! I enjoyed writing this a lot. Getting these examples to work in JavaScript looks nothing like the PyTorch (or other deep learning framework) code, so I feel like I learned this twice. If you're still curious about this space, I highly recommend reading the paper yourself, I skipped a lot of the good parts.

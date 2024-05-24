@@ -256,3 +256,25 @@ iframe.p5 {
   width: auto;
   height: auto;
 }
+
+
+/*
+ * Thank you Robin Rendle!
+ * https://css-tricks.com/exploring-what-the-details-and-summary-elements-can-do/
+*/
+details {
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.15s background linear;
+}
+
+summary {
+  background: #44015415;
+}
+
+details:hover,
+details:focus {
+  background: #44015415;
+}
