@@ -1,7 +1,7 @@
 ---
 title: Visualizing language model sampling
 author: Zach
-date: 2024-05-22
+date: 2024-05-31
 slug: visualizing-sampling
 tags: []
 ---
