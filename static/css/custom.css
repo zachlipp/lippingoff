@@ -217,7 +217,7 @@ iframe.p5 {
 }
 
 
-@media screen and (max-width: 700px) {
+@media screen and (orientation:portrait) {
     .rotate {
         background-color: rgb(0, 0,0, .5);
         height: 100%;
