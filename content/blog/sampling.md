@@ -14,7 +14,7 @@ Consider a language model as a black box, much the way we might use the ChatGPT 
 
 ![](/post/visualizing_sampling/llm_app.png)
 
-We translate our question by **encoding** it, or converting it toa sequence of numbers. The model outputs more numbers, which are **decoded** back to tokens.
+We translate our question by **encoding** it, or converting it to a sequence of numbers. The model outputs more numbers, which are **decoded** back to tokens.
 
 <details>
 <summary>ℹ️  A quick aside on terms</summary>
@@ -38,7 +38,7 @@ The softmax function sets all of our values to be between 0 and 1, with the cons
 
 ## Choosing a prediction
 
-Let's step away from the ChatGPT example for a second. Consider a classification problem: An app that identifies what's in a photo. How do we go from a model generating probabilities to a prediction? In this case, we get the best answer from the model by...returning the most probable class.
+Let's step away from the ChatGPT example for a second. Consider a classification problem: An app that identifies what's in a photo. How do we go from a model generating probabilities to a prediction? That's simple enough: Given an array of probabilities, pick the biggest one.
 
 ![](/post/visualizing_sampling/vision.png)
 
