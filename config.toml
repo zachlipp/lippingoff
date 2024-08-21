@@ -52,7 +52,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     lineNumbersInTable = true
     noClasses = true
     noHl = false
-    style = 'doom-one'
+    style = 'nord'
     tabWidth = 4
   [markup.goldmark.renderer]
     unsafe = true
