@@ -11,7 +11,12 @@ I've been using the flashcard program Anki religiously to study programming conc
 
 After a few fits and starts, I figured out a way to highlight code blocks that doesn't rely on Anki's add-on system, which isn't supported by its mobile apps. This post is more synthesis than genesis - I found a lot of useful information online, but nothing that put everything together. Here's my attempt to do so.
 
-## Configuring Anki to use `highlight.js`
+## The easiest way to get started
+If you are just looking to get `highlight.js` working with an Anki collection; I have a treat for you. [Here's](/post/anki-syntax-highlighting/highlight-js-bundle.colpkg) a massive 151KB Anki export (half the size of one of the images in this post) containing a single card...and all the files you need to highlight your code. To change your theme, open the card template editor (for example, from studying a card -> `Edit` -> `Cards...`, click `Back Template`, and modify `<link rel="stylesheet" href="_nord.css">` to refer to the name of another highlight.js stylesheet (see [the demo](https://highlightjs.org/demo) for inspiration).
+
+If you want to learn more about how this works, read on.
+
+## Configuring Anki to use `highlight.js`: The hard way
 - Download [highlight.js](https://highlightjs.org/). You'll likely only need `highlight.min.js` and the themes you want to use (as a tall, pale dude from the Midwest, I'm all-in on `nord.css`). See the documentation to verify your target language is supported.
 - You'll need to add `highlight.min.js` and your css file to your Anki installation's `collection.media` directory. On Mac, this is located at `~/Library/Application Support/Anki2/User 1/collection.media`. `User 1` here is my Anki username and the default username in Anki; this will change if you have updated your username in Anki. By default, Anki will consider these files unused media if a user uses `Tools > Check Media`, and it will therefore suggest we remove them. We can prevent this by prefixing the files with an underscore. I suggest renaming them to `_highlight.min.js` and `_nord.css` (or the like).
 - Create a new file in the `collection.media` named something like `_my_highlight.js`. This file should include the following:
@@ -48,7 +53,7 @@ document.querySelectorAll('pre code').forEach((block) => {
 </code>
 </pre>
 ```
-Where `{{MyCodeField}}` is the name of the code field on your card. (Mine is `{{Solution}}`).
+Where `{{MyCodeField}}` is the name of the code field on your card. (Mine is `{{Solution}}`). Why does this work? I'm still figuring that out.
 
 You should now see your rendered code in your card preview.
 
@@ -60,7 +65,7 @@ Congrats, that's it! This gives you:
 - Syntax highlighting in whatever theme you want
 - Automatic language discovery through `highlight.js`. (Languages can be set manually with `class="code-python">` if you prefer)
 - Mac, web, and iOS support, at least (if any Android Anki-ers (Ankis? Ank-ers?) read this, I'd love to see if it works for you, too)
-- Offline availability. You have to love some local JavaScript.
+- Offline availability. You have to love some local JavaScript and CSS.
 - Your data preserved. You don't have to modify your card data to use this highlighting (unlike some add-ons). Remove this code, and your card is just as it was before.
 
 ## Useful links
