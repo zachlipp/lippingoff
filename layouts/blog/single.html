@@ -1,40 +1,43 @@
 {{ partial "head" . }}
-  <body>
+
+<body>
     <div id="wrap">
 
-      <!-- Header -->
-      {{ partial "header" . }}
-      {{ if isset .Params "showpagemeta" }}
+        <!-- Header -->
+        {{ partial "header" . }}
+        {{ if isset .Params "showpagemeta" }}
         {{ .Render "projects" }}
-      {{ else }}
-      <div class="container">
-        <div class="blog-post">
-          <h3>
-            <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
-          </h3>
-        </div>
-        <div class="blog-title">
-          <h4>
-          {{ .Date.Format "January 2, 2006" }}
-            &nbsp;&nbsp;
-            {{ range .Params.tags }}
-            <span class="label label-success">{{ . }}</span>
-            {{ end }}
-          </h4>
-        </div>
-        {{ partial "date_warning" . }}
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="blogpost">
-              {{ .Content }}
+        {{ else }}
+        <div class="container">
+            <div class="blog-post">
+                <h3>
+                    <strong><a href="{{ .Permalink }}">{{ .Title }}</a></strong>
+                </h3>
             </div>
+            <div class="blog-title">
+                <h4>
+                    {{ .Date.Format "January 2, 2006" }}
+                    &nbsp;&nbsp;
+                    {{ range .Params.tags }}
+                    <span class="label label-success">{{ . }}</span>
+                    {{ end }}
+                </h4>
+            </div>
+            {{ partial "date_warning" . }}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="blogpost">
+                        {{ .Content }}
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+            {{ partial "rc_love" . }}
         </div>
-      </div>
-      {{ end }}
-    </div>
 
-    <!-- Footer -->
-    {{ partial "footer" . }}
+        <!-- Footer -->
+        {{ partial "footer" . }}
 
-  </body>
+</body>
+
 </html>
