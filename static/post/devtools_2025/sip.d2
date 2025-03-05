@@ -1,0 +1,24 @@
+direction: right
+shape: sequence_diagram
+
+a: Alice
+ap: atlanta.com proxy
+bp: biloxi.com proxy
+b: Bob
+
+a -> ap: INVITE F1
+ap -> bp: INVITE F2
+ap -> a: 100 Trying F3
+bp -> b: INVITE F4
+bp -> ap: 100 Trying F5
+b -> bp: 180 Ringing F6
+bp -> ap: 180 Ringing F7
+ap -> a: 180 Ringing F8
+b -> bp: 200 OK F9
+bp -> ap: 200 OK F10
+ap -> a: 200 OK F11
+a -> b: ACK F12
+a <-> b: Media Session
+b -> a: BYE F13
+a -> b: 200 OK F14
+
