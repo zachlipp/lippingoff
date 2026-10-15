@@ -1,0 +1,28 @@
+color:
+  palette:
+    bg: "#161616"
+    fg: "#f2f4f6"
+    sel0: "#2a2a2a"
+    sel1: "#525256"
+    black: "#282826"
+    light-black: "#484848"
+    light-grey: "#e9ecef"
+    red: "#ee5396"
+    green: "#25be6a"
+    yellow: "#08bdba"
+    blue: "#78a9ff"
+    magenta: "#be95ff"
+    cyan: "#15f0fc"
+    white: "#dfdfe0"
+    orange: "#3ddbd9"
+    pink: "#ff7eb6"
+  background: bg
+  foreground: fg
+  primary: cyan
+  link: pink
+typography:
+  fonts:
+    - family: Montserrat
+      source: google
+  base: Montserrat
+  headings: Montserrat

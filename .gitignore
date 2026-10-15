@@ -1,10 +1,5 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
 .DS_Store
-public/
-.hugo_build.lock
+_site
+/.quarto/
+**/*.quarto_ipynb
 
-# Local Netlify folder
-.netlify

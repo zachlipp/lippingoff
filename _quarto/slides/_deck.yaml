@@ -1,0 +1,15 @@
+format:
+  revealjs:
+    slide-level: 1
+    center: true
+    controls: false
+    progress: false
+    transition: slide
+    auto-stretch: false
+    width: 960
+    height: 700
+    highlight-style: nord
+    template-partials:
+      - ../_partials/title-slide.html
+filters:
+  - ../_filters/qr.lua

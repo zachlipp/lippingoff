@@ -1,0 +1,11 @@
+.home {
+  text-align: left;
+  margin-top: 8%;
+}
+.reveal img {
+  width: 500px;
+  height: auto;
+}
+.reveal ul{
+  display: block !important;
+}
