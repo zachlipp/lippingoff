@@ -1,0 +1,10 @@
+/*-- scss:rules --*/
+.deck-frame {
+  width: 100%;
+  aspect-ratio: 960 / 700;
+  border: 1px solid $brand-light-grey;
+}
+
+a:any-link code {
+  background: $brand-light-grey;
+}

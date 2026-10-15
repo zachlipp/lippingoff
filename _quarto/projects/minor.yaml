@@ -1,0 +1,20 @@
+- title: Object detection service
+  path: https://github.com/zachlipp/object-detection-service
+  date: 2023-12-20
+  dates: December 2023
+  description: I made a small example of a machine learning service, including builds, tests, and some CI steps
+- title: Distributed tracing example
+  path: https://github.com/zachlipp/pycascades_demo_2023
+  date: 2023-02-01
+  dates: February 2023
+  description: An example of how to trace Flask and FastAPI webservers with OpenTelemetry
+- title: Snowpiles
+  path: https://github.com/zachlipp/snowpiles
+  date: 2021-02-20
+  dates: February 2021
+  description: I containerized Garret Dash Nelson's snowpiles visualization
+- title: Sanders 2020 Network Visualizer
+  path: https://github.com/zachlipp/network-visualizer
+  date: 2020-10-06
+  dates: October 2020
+  description: I made a tool to help the Sanders 2020 presidential campaign promote relational organizing in the field

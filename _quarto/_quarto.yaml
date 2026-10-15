@@ -1,0 +1,24 @@
+project:
+  type: website
+  resources: static
+  output-dir: ../_site
+  preview:
+    port: 4870
+website:
+  title: Lipping Off
+  site-url: https://lippingoff.com
+  navbar:
+    right:
+      - href: index.md
+        text: about
+      - href: posts/index.md
+        text: posts
+      - href: slides/index.md
+        text: talks
+      - href: projects/index.md
+        text: projects
+format:
+  html:
+    theme: [brand, theme.scss]
+    template-partials:
+      - slides/_partials/title-metadata.html

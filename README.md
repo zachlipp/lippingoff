@@ -1,19 +1,15 @@
 # Lipping Off
 
-Code for my personal blog, written largely in markdown and generated with [hugo](https://gohugo.io/).
+Code for my personal blog. Written in markdown, rendered by quarto.
 
 ## Serving locally
 
-The site and presentations can be viewed locally with `hugo serve`. By default, this serves the site at `localhost:1313`.
+`quarto preview _quarto` builds the site, runs it at https://localhost:4870, and watches for changes.
 
 ## Deploying
 
-I went with Netlify over GitHub Actions for deploying the site. At the time I started this, GitHub Actions did not have a free tier and I did not want to pay for them out of the gate.
+This site deploys using GitHub Actions and GitHub Pages.
 
-## Slides
+## Coding agents
 
-I use the [reveal-hugo](https://reveal-hugo.dzello.com) plugin to render some markdowns to reveal.js slides. That is, if a markdown file indicates
-```yaml
-outputs: Reveal
-```
-in the top level comment, it displays as a presentation instead of a blog post. `reveal-hugo` has a ton of powerful features, so if any of the syntax I use seems confusing, consult the `reveal-hugo` website for a general tutorial.
+`agent_docs/` contains documentation written by coding agents; agents should refer to these documents.
